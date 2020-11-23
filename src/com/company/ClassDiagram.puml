@@ -1,0 +1,81 @@
+@startuml
+
+class Main {
+
+}
+Main - Auth : launchApp( )
+
+class Menu { }
+
+class Auth {
+authentication ( )
+}
+
+Auth -- ClientInterface
+Auth -- AdminInterface
+
+class ClientInterface {
+
+}
+
+ClientInterface -- Client
+
+class AdminInterface {
+
+}
+
+AdminInterface -- Admin
+
+class User {
+==
+browseAllProducts ( )
+}
+
+class Admin extends User {
+==
+addProductToMarket ( )
+}
+
+Admin -- Market
+
+class Client extends User {
+==
+addProductToCart( )
+cancelPurchase ( )
+confirmPurchase ( )
+}
+
+Client -- Market
+Client - Cart
+
+class Market {
+m_aSalesHistory
+==
+updateStore ( )
+getStore ( )
+}
+
+Market -- Database
+
+class Database {
+m_aProductListAll
+==
+}
+
+class Cart {
+m_aProductList
+==
+}
+
+class Product {
+m_sRef
+m_iNumberSale
+}
+
+Product -- Database
+
+class Order {
+
+}
+
+@enduml
