@@ -1,5 +1,7 @@
 package com.company.views;
 
+import com.company.store.Market;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -29,14 +31,30 @@ public class Menu {
     }
 
     public static void chooseRole() {
+        Market myMarket = new Market();
         String choice;
         do {
             System.out.println("Make a choice");
-            System.out.println("Log In as\n\n1-Client\n2-Administrator\n3-Exit");
+            System.out.println("Log In as\n\n1-Client\n2-Administrator\n3" +
+                    "-Create an Account" +
+                    "\n4-Exit");
             choice = userInput.next();
-        } while (!choice.equalsIgnoreCase("1") & !choice.equalsIgnoreCase("2") & !choice.equalsIgnoreCase("3"));
+        } while (!choice.equalsIgnoreCase("1") & !choice.equalsIgnoreCase("2") & !choice.equalsIgnoreCase("3") & !choice.equalsIgnoreCase("4"));
         // test du choice
-        System.out.println(choice); // todo to delete when ok
+        switch (choice) {
+            case "1":
+                Auth.isClientRegistered(myMarket);
+                break;
+            case "2":
+                Auth.isAdminRegistered();
+                break;
+            case "3":
+                Auth.createAccount();
+                break;
+            case "4":
+                System.exit(0);
+                break;
+        }
     }
 
     // -------------------------------------------------

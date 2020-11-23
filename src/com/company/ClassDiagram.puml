@@ -9,13 +9,21 @@ class Menu { }
 
 class Auth {
 authentication ( )
+createAccount( )
 }
+
+class UserDatabase {
+
+}
+
+Auth -- UserDatabase
 
 Auth -- ClientInterface
 Auth -- AdminInterface
 
 class ClientInterface {
 
+choiceMenu()
 }
 
 ClientInterface -- Client
@@ -27,6 +35,8 @@ class AdminInterface {
 AdminInterface -- Admin
 
 class User {
+m_sName
+m_sPassword
 ==
 browseAllProducts ( )
 }
@@ -34,6 +44,7 @@ browseAllProducts ( )
 class Admin extends User {
 ==
 addProductToMarket ( )
+displayAllOrder ( )
 }
 
 Admin -- Market
@@ -50,6 +61,7 @@ Client - Cart
 
 class Market {
 m_aSalesHistory
+m_iQuantityStock?
 ==
 updateStore ( )
 getStore ( )
@@ -68,8 +80,11 @@ m_aProductList
 }
 
 class Product {
+m_sName
 m_sRef
 m_iNumberSale
+m_iUnitPrice
+m_iQuantityStock?
 }
 
 Product -- Database

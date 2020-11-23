@@ -1,4 +1,4 @@
-#The cyber market project
+The cyber market project
 ---
 ### participants
 - Tan
