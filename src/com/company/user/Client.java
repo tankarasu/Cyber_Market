@@ -10,14 +10,14 @@ public class Client {
     // variables membres
     // -------------------------------------------------
 
-    static Scanner userInput = new Scanner(System.in);
-
+    private static Scanner userInput = new Scanner(System.in);
+    private static Cart myCart;
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
 
     public Client() {
-
+        myCart = new Cart();
     }
 
     // -------------------------------------------------
@@ -34,11 +34,19 @@ public class Client {
             System.out.println("How many product to add to cart ?");
             choice = userInput.next();
         } while (!Pattern.matches(regex, choice));
+        int quantityToAdd = Integer.parseInt(choice);
+        myCart.addProductToCart(p_product, quantityToAdd);
+
     }
 
     // -------------------------------------------------
     // getters
     // -------------------------------------------------
+
+    public Cart getMyCart() {
+        return myCart;
+    }
+
 
     // -------------------------------------------------
     // setters

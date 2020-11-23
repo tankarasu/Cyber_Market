@@ -12,7 +12,7 @@ public class ClientInterface {
     // -------------------------------------------------
 
     static Scanner userInput = new Scanner(System.in);
-
+    static Client client = new Client();
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -24,7 +24,7 @@ public class ClientInterface {
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
-
+    // todo Rajouter case 0 return depuis productlist
     public static void ChoiceMenu(Market myMarket) {
         Product baguette = new Product("baguette",42,2);
         String choice;
@@ -39,7 +39,7 @@ public class ClientInterface {
                 Client.selectProduct(baguette);
                 break;
             case "2":
-
+                client.getMyCart().getCart();
                 break;
             case "3":
                 Menu.chooseRole();

@@ -18,9 +18,9 @@ public class Auth {
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
-    public static void isAdminRegistered(){
-        System.out.println("Your are registred");
-        AdminInterface.ChoiceMenu();
+    public static void isAdminRegistered(Market myMarket){
+        System.out.println("Your are registered");
+        AdminInterface.ChoiceMenu(myMarket);
     }
 
     public static void isClientRegistered(Market myMarket){

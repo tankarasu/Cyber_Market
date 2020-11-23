@@ -19,7 +19,7 @@ public class Menu {
     // méthodes
     // -------------------------------------------------
 
-    public static void launchApp() {
+    public static void startApp() {
 
         System.out.println("-------------------------");
         System.out.println("Bienvenue au Cyber Market");
@@ -46,7 +46,7 @@ public class Menu {
                 Auth.isClientRegistered(myMarket);
                 break;
             case "2":
-                Auth.isAdminRegistered();
+                Auth.isAdminRegistered(myMarket);
                 break;
             case "3":
                 Auth.createAccount();

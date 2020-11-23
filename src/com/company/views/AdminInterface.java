@@ -1,5 +1,7 @@
 package com.company.views;
 
+import com.company.store.Market;
+
 import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.util.Scanner;
 
@@ -21,23 +23,25 @@ public class AdminInterface {
     // -------------------------------------------------
 
 
-    public static void ChoiceMenu() {
+    public static void ChoiceMenu(Market myMarket) {
         String choice;
         do {
             System.out.println("What do you want to do ?");
             System.out.println("1-List products\n2-Add a Product\n3-Return");
             choice = userInput.next();
+            switch (choice) {
+                case "1":
+                    myMarket.getStore();
+                    break;
+                case "2":
+                    myMarket.addProductMenu();
+                    break;
+                case "3":
+                    Menu.chooseRole();
+                    return;
+            }
+            choice="";
         } while (!choice.equalsIgnoreCase("1") & !choice.equalsIgnoreCase("2") & !choice.equalsIgnoreCase("3"));
-        switch (choice) {
-            case "1":
-                break;
-            case "2":
-
-                break;
-            case "3":
-                Menu.chooseRole();
-                break;
-        }
     }
 
     // -------------------------------------------------
