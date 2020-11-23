@@ -5,19 +5,23 @@ import com.company.store.Product;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Client {
+public class Client extends User {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
 
-    private static Scanner userInput = new Scanner(System.in);
+    private static final Scanner userInput = new Scanner(System.in);
     private static Cart myCart;
+
+
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
 
-    public Client() {
-        myCart = new Cart();
+    public Client(String p_sName, String p_sPassword) {
+        myCart = new Cart(); // à voir
+        setName(p_sName);
+        setPassword(p_sPassword);
     }
 
     // -------------------------------------------------
@@ -39,12 +43,12 @@ public class Client {
 
     }
 
-    public static void buyCartContent(){
+    public static void buyCartContent() {
         System.out.println("products bought");
     }
 
     public static void clientStoreChoice() {
-        
+
     }
 
     // -------------------------------------------------

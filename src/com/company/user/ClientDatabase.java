@@ -1,49 +1,42 @@
 package com.company.user;
 
-public class User {
+import com.company.store.Product;
+
+import java.util.ArrayList;
+
+public class ClientDatabase {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    private String m_sName;
-    private String m_sPassword;
+    private final ArrayList<Client> m_aClientList = new ArrayList<>();
+    // todo erst ce que le final gène ?
+
     // -------------------------------------------------
-    //constructor
+    // constructor
     // -------------------------------------------------
 
-    public User() {
-
+    public ClientDatabase() {
+        Client clientOne = new Client("John", "AZERTY1");
+        Client clientTwo = new Client("Janet", "QWERTY1");
+        getClientList().add(clientOne);
+        getClientList().add(clientTwo);
     }
 
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
 
-    // public void choiceMenu
-    // todo repenser à la refacto
-
     // -------------------------------------------------
     // getters
     // -------------------------------------------------
 
-    public String getName() {
-        return m_sName;
+    public ArrayList<Client> getClientList() {
+        return m_aClientList;
     }
-
-    public String getPassword() {
-        return m_sPassword;
-    }
-
 
     // -------------------------------------------------
     // setters
     // -------------------------------------------------
 
 
-    public void setName(String m_sName) {
-        this.m_sName = m_sName;
-    }
-
-    public void setPassword(String m_sPassword) {
-        this.m_sPassword = m_sPassword;
-    }
 }

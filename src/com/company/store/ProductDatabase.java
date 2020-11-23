@@ -1,6 +1,6 @@
 package com.company.store;
 
-public class Database {
+public class ProductDatabase {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
@@ -9,7 +9,7 @@ public class Database {
     // constructor
     // -------------------------------------------------
 
-    public Database() {
+    public ProductDatabase() {
 
     }
 
