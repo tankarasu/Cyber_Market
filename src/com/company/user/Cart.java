@@ -11,7 +11,7 @@ public class Cart {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    ArrayList<Product> m_aCart;
+    static ArrayList<Product> m_aCart;
     static Scanner userInput;
 
     // -------------------------------------------------
@@ -34,7 +34,7 @@ public class Cart {
                     "Quantity:" + product.getQuantity() + " price:" + product.getPrice());
         m_dTotalPrice+=product.getPrice();
         }
-        System.out.println("Total price: "+m_dTotalPrice+"\nWhat do you want to do?\n1 - Buy cart\n2 - Return");
+        System.out.println("Total price: "+m_dTotalPrice+"\nWhat do you want to do?\n1 - Buy cart\n2 - Remove all products\n3 - Return");
         userInput = new Scanner(System.in);
         String choice = userInput.next();
         do{
@@ -42,8 +42,15 @@ public class Cart {
                 case "1":
                     System.out.println("Buy menu");
                     //Appel achat cart
-                    break;
+                    Client.buyCartContent();
+                    System.out.println("you have bought the contents of the cart");
+                    Menu.startApp();
+                    return;
                 case "2":
+                    removeAllProducts();
+                    Menu.startApp();
+                    return;
+                case "3":
                     return;
             }
         }while (!choice.equalsIgnoreCase("1") & !choice.equalsIgnoreCase("2"));
@@ -60,10 +67,15 @@ public class Cart {
         m_aCart.add(p_pProduct);
         Market.removeProduct(); // todo remplacer avec l'instance myMarket
     }
-    public void removeProductToCart(Product p_pProduct, int p_iProductQuantity){
+
+    public void removeProductFromCart(Product p_pProduct, int p_iProductQuantity){
         m_aCart.remove(p_pProduct);
     } // todo a vérifier: quantité de produits, ne pas tout supprimer d'un coup
 
+    private static void removeAllProducts(){
+        m_aCart.clear();
+        System.out.println("Your cart is now empty");
+    }
 
     // -------------------------------------------------
     // getters

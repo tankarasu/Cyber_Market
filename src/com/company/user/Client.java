@@ -39,6 +39,14 @@ public class Client {
 
     }
 
+    public static void buyCartContent(){
+        System.out.println("products bought");
+    }
+
+    public static void clientStoreChoice() {
+        
+    }
+
     // -------------------------------------------------
     // getters
     // -------------------------------------------------

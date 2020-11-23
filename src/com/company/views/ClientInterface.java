@@ -36,7 +36,9 @@ public class ClientInterface {
         switch (choice) {
             case "1":
                 myMarket.getStore();
-                Client.selectProduct(baguette);
+                // todo choisir l'article voulu
+                Client.clientStoreChoice();
+                //Client.selectProduct(baguette);
                 break;
             case "2":
                 client.getMyCart().getCart();

@@ -69,7 +69,7 @@ public class Market {
             System.out.println((index + 1)+" - name:" + product.getName() + " " +
                     "Quantity:" + product.getQuantity() + " price:" + product.getPrice());
         }
-
+        //si on ne choisit pas de produit direction
         return null;
     }
 

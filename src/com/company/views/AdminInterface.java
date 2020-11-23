@@ -37,7 +37,7 @@ public class AdminInterface {
                     myMarket.addProductMenu();
                     break;
                 case "3":
-                    Menu.chooseRole();
+                    Menu.startApp();
                     return;
             }
             choice="";
