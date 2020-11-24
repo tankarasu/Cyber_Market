@@ -37,8 +37,6 @@ public class Menu {
         chooseRole();
     }
 
-    // todo instancied  user like admin or Client
-
     /**
      * with this method you choose the role you play with your logIn/password
      * pair, u can create an account if u don't have one.
@@ -66,17 +64,23 @@ public class Menu {
 
         switch (choice) {
             case "1":
-                Client currentClient = new Client("","");
-                Auth.isClientRegistered(myMarket,clientDatabase);
+                int clientIndex =
+                        Auth.isClientRegistered(clientDatabase);
+                if (clientIndex != -1) {
+                    Client currentClient = clientDatabase.getClientList().get(clientIndex);
+                    System.out.println("index client: " + clientIndex);
+                    ClientInterface.ChoiceMenu(myMarket,currentClient);
+                } else {
+                    System.out.println("You are not registered\n try again");
+                    chooseRole();
+                    // todo première verif sur la récursivité ok
+                }
 
                 // création d'une instance de Client
                 // vérification au niveau de la ClientDatabase
                 // new Client = new Client(nom de la database, password de la
                 // db, historique db)
-                // error Handling
-                // nom existe
-                // password corresponde au nom
-                // password ne soit pas vide
+
                 // accès au menu clientInterface
                 break;
             case "2":

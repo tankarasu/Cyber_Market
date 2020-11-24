@@ -9,7 +9,7 @@ public class ClientDatabase {
     // variables membres
     // -------------------------------------------------
     private final ArrayList<Client> m_aClientList = new ArrayList<>();
-    // todo erst ce que le final gène ?
+    // todo est ce que le final gène ?
 
     // -------------------------------------------------
     // constructor

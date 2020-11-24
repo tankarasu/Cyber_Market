@@ -3,9 +3,12 @@
 class Main {
 
 }
-Main - Auth : launchApp( )
+Main - Menu
 
-class Menu { }
+class Menu {
+startApp()
+chooseRole()
+ }
 
 class Auth {
 authentication ( )

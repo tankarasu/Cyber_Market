@@ -1,0 +1,5 @@
+@startuml
+Main -> Menu : startApp( )
+Menu -> Auth : isClientRegistered( )
+Auth -> Menu
+@enduml

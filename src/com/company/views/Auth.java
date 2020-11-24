@@ -29,47 +29,60 @@ public class Auth {
         AdminInterface.ChoiceMenu(myMarket);
     }
 
-    public static boolean isClientRegistered(
-            Market myMarket,
+    public static int isClientRegistered(
             ClientDatabase clientDatabase) {
         String name = "";
         String password = "";
+        int index=0;
+
         // todo verifier les scanner avec nextLine
-        do {
-            System.out.println("What's your name Sir?");
-            name = userInput.next();
-        } while (!Pattern.matches("^[a-zA-Z\\s'\\-\\pL]+$", name));
+        // checking the name
+        System.out.println("What's your name Sir?");
+        name = userInput.next();
 
-        do {
-            System.out.println("Please enter your Password");
-            password = userInput.next();
-        } while (!Pattern.matches("^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)" +
-                "[0-9a-zA-Z@!:;_-]{6,}$", password));
+        boolean dbName = false;
+        for (Client client : clientDatabase.getClientList()) {
+            if (client.getName().equals(name)) {
+                dbName = true;
+                break;
+            }
+        }
+        // is the name in the DB exist
+        if (!dbName) {
+            System.out.println("This userName doesn't exist!");
+            return -1;
+        }
+        // checking th password
+        System.out.println("Please enter your Password");
+        password = userInput.next();
 
-        // validation du client et Password
         boolean isRegistred = false;
         for (Client client : clientDatabase.getClientList()) {
             if ((client.getPassword().equals(password))
                     & (client.getName().equals(name))) {
+                index=clientDatabase.getClientList().indexOf(client);
                 isRegistred = true;
                 break;
             }
-            return isRegistred;
         }
 
+        // user validation
         if (isRegistred) {
-            System.out.println("Your are registred");
+            System.out.println("\nLogged IN\n");
+            return index;
             // continuer d'ici pour l'interfaceClient
         } else {
-            System.out.println("Your Name or Password are incorrect");
+            System.out.println("Your Password is incorrect");
         }
-
-        // ClientInterface.ChoiceMenu(myMarket);
-        return true;
+        return -1;
     }
 
     public static void createAccount() {
         System.out.println("Account created");
+
+        String regexPassword =
+                "^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*[0-9a-zA-Z@!:;_-]{6,}$";
+        String regexName = "^[a-zA-Z\\s'\\-\\pL]+$"; // todo check ?
     }
 
     // -------------------------------------------------

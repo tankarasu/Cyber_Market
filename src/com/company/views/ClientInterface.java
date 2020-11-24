@@ -26,7 +26,8 @@ public class ClientInterface {
     // méthodes
     // -------------------------------------------------
     // todo Rajouter case 0 return depuis productlist
-    public static void ChoiceMenu(Market myMarket) {
+    public static void ChoiceMenu(Market myMarket, Client client) {
+        System.out.println("Welcom " + client.getName());
         Product baguette = new Product("baguette", 42, 2);
         String choice;
         do {
@@ -42,7 +43,7 @@ public class ClientInterface {
                 //Client.selectProduct(baguette);
                 break;
             case "2":
-               // client.getMyCart().getCart();
+                // client.getMyCart().getCart();
                 break;
             case "3":
                 Menu.chooseRole();
