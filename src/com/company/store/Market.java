@@ -30,11 +30,11 @@ public class Market {
     // méthodes
     // -------------------------------------------------
 
-    public static void removeProduct(){
+    public static void removeProduct() {
         System.out.println("Produit supprimé");
     }
 
-    public void addProductMenu(){
+    public void addProductMenu() {
         String regex = "^[ ]?[0-9]+[ ]?$";
         // todo inclure String.trim()
         String choice;
@@ -58,19 +58,28 @@ public class Market {
         addProduct(productName, productPrice, productQuantity);
     }
 
-    public void addProduct(String p_sProductName, double p_dProductPrice, int p_iQuantity){
-        m_aStore.add( new Product(p_sProductName, p_iQuantity, p_dProductPrice));
+    public void addProduct(String p_sProductName, double p_dProductPrice, int p_iQuantity) {
+        m_aStore.add(new Product(p_sProductName, p_iQuantity, p_dProductPrice));
         System.out.println("Product added");
     }
 
     public String getStore() {
         for (Product product : m_aStore) {
             int index = m_aStore.indexOf(product);
-            System.out.println((index + 1)+" - name:" + product.getName() + " " +
+            System.out.println((index + 1) + " - " + product.getName() + " " +
                     "Quantity:" + product.getQuantity() + " price:" + product.getPrice());
         }
         //si on ne choisit pas de produit direction
         return null;
+    }
+
+    public void getSpecificProduct(int index) {
+        StringBuilder result = new StringBuilder("");
+        result.append(m_aStore.get(index).getName() + " - ")
+                .append(m_aStore.get(index).getQuantity() + " pieces in " +
+                        "Stock - ")
+                .append(m_aStore.get(index).getPrice() + " €/unit");
+        System.out.println(result);
     }
 
     public void listAllProduct() {
@@ -79,6 +88,10 @@ public class Market {
     // -------------------------------------------------
     // getters
     // -------------------------------------------------
+
+    public ArrayList<Product> getTheStore() {
+        return m_aStore;
+    }
 
     // -------------------------------------------------
     // setters

@@ -4,9 +4,7 @@ import com.company.store.Market;
 import com.company.user.Client;
 import com.company.user.ClientDatabase;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Auth {
     // -------------------------------------------------

@@ -75,13 +75,6 @@ public class Menu {
                     chooseRole();
                     // todo première verif sur la récursivité ok
                 }
-
-                // création d'une instance de Client
-                // vérification au niveau de la ClientDatabase
-                // new Client = new Client(nom de la database, password de la
-                // db, historique db)
-
-                // accès au menu clientInterface
                 break;
             case "2":
                 Auth.isAdminRegistered(myMarket);

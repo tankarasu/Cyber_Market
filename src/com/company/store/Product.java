@@ -15,7 +15,7 @@ public class Product {
 
     public Product(String name, int quantity, double price) {
         setM_sName(name);
-        setM_iQuantity(quantity);
+        setQuantity(quantity);
         setM_iPrice(price);
     }
 
@@ -48,7 +48,7 @@ public class Product {
         this.m_sName = m_sName;
     }
 
-    public void setM_iQuantity(int m_iQuantity) {
+    public void setQuantity(int m_iQuantity) {
         this.m_iQuantity = m_iQuantity;
     }
 
