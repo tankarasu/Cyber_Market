@@ -12,7 +12,7 @@ public class Client extends User {
     // -------------------------------------------------
 
     private static final Scanner userInput = new Scanner(System.in);
-    private Cart myCart;
+    private final Cart myCart;
 
 
     // -------------------------------------------------
@@ -29,32 +29,13 @@ public class Client extends User {
     // méthodes
     // -------------------------------------------------
 
-//    public static void selectProduct(Product p_product) {
-//        String regex = "^[ ]?[0-9]+[ ]?$";
-//        String choice;
-//        System.out.println(
-//                "nom: " + p_product.getName() + " quantity: " + p_product.getQuantity() + " price: " + p_product.getPrice()
-//        );
-//        do {
-//            System.out.println("How many product to add to cart ?");
-//            choice = userInput.next();
-//        } while (!Pattern.matches(regex, choice));
-//        int quantityToAdd = Integer.parseInt(choice);
-//        myCart.addProductToCart(p_product, quantityToAdd);
-//
-//    }
-
-    public static void buyCartContent() {
-        System.out.println("products bought");
-    }
-
     // displaying selected product informations
     public static void clientStoreChoice(Market myMarket, Client client) {
         String numberRegex = "^[ ]?[0-9]\\d*[ ]?$";
         String choice;
         Product currentProduct;
         int quantityToAdd = 0;
-        int index = 0;
+        int index;
         do {
             System.out.println("Choose a product or Return");
             choice = userInput.next();
@@ -113,9 +94,5 @@ public class Client extends User {
     public Cart getMyCart() {
         return myCart;
     }
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
 
 }

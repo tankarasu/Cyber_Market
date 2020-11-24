@@ -20,7 +20,6 @@ public class Cart {
 
     public Cart() {
         m_aCart = new ArrayList<>();
-        // todo bien instancier les cart
     }
 
     // -------------------------------------------------
@@ -47,16 +46,7 @@ public class Cart {
                 .append("--------------------------\n")
                 .append("1 - Buy cart\n")
                 .append("2 - Remove all products\n")
-//                .append("3 - Remove Specific product\n")
                 .append("3 - Return");
-
-        // buy all product in Cart
-        // vide la cart
-        // au revoir vers la page de log
-
-        // remove a specific Product
-
-        // remove All product
 
         do {
             System.out.println(cartMenu);
@@ -75,7 +65,6 @@ public class Cart {
                 // on rajoute les produits de la cart au stock
                 for (int i = 0; i < myMarket.getTheStore().size(); i++) {
                     for (int j = 0; j < m_aCart.size(); j++) {
-                        // mother fucking condition
                         if (myMarket.getTheStore().get(i).getName().equals(m_aCart.get(j).getName())) {
                             myMarket.getTheStore().get(i).setQuantity(myMarket.getTheStore().get(i).getQuantity() + m_aCart.get(j).getQuantity());
                         }
@@ -83,55 +72,17 @@ public class Cart {
                 }
                 m_aCart.clear();
                 break;
-//            case "3": // todo nice to have
-//                break;
+
             case "3":
                 return;
         }
 
-//        do{
-//            switch (choice) {
-//                case "1":
-//                    System.out.println("Buy menu");
-//                    //Appel achat cart
-//                    Client.buyCartContent();
-//                    System.out.println("you have bought the contents of the cart");
-//                    Menu.startApp();
-//                    return;
-//                case "2":
-//                    removeAllProducts();
-//                    Menu.startApp();
-//                    return;
-//
-        //   }
-
-//    public ArrayList<Product> getCart() {
-//        return m_aCart;
     }
 
     public void addProductToCart(Product p_pProduct, int p_iProductQuantity) {
         Product cartProduct = new Product(p_pProduct.getName(),
                 p_iProductQuantity, p_pProduct.getPrice());
-//        p_pProduct.setQuantity(p);*/
         m_aCart.add(cartProduct);
     }
-
-//    public void removeProductFromCart(Product p_pProduct, int p_iProductQuantity) {
-//        m_aCart.remove(p_pProduct);
-//    } // todo a vérifier: quantité de produits, ne pas tout supprimer d'un coup
-
-    public void removeAllProducts() {
-//        m_aCart.clear();
-        System.out.println("Your cart is now empty");
-    }
-
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }

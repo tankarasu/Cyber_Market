@@ -30,10 +30,6 @@ public class Market {
     // méthodes
     // -------------------------------------------------
 
-    public static void removeProduct() {
-        System.out.println("Produit supprimé");
-    }
-
     public void addProductMenu() {
         String regex = "^[ ]?[0-9]+[ ]?$";
         // todo inclure String.trim()
@@ -63,13 +59,12 @@ public class Market {
         System.out.println("Product added");
     }
 
-    public String getProductList() {
+    public void getProductList() {
         for (Product product : m_aStore) {
             int index = m_aStore.indexOf(product);
             System.out.println((index + 1) + " - " + product.getName() + " " +
                     "Quantity:" + product.getQuantity() + " price:" + product.getPrice());
         }
-        return null;
     }
 
     public void getSpecificProduct(int index) {
@@ -88,10 +83,6 @@ public class Market {
     public ArrayList<Product> getTheStore() {
         return m_aStore;
     }
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
 
 
 }

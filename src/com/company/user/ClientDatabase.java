@@ -1,13 +1,6 @@
 package com.company.user;
 
-import com.company.store.Product;
-
-import java.util.ArrayList;
-
 public class ClientDatabase extends UserDatabase {
-    // -------------------------------------------------
-    // variables membres
-    // -------------------------------------------------
 
     // -------------------------------------------------
     // constructor
@@ -19,19 +12,5 @@ public class ClientDatabase extends UserDatabase {
         getM_aUserList().add(clientOne);
         getM_aUserList().add(clientTwo);
     }
-
-    // -------------------------------------------------
-    // méthodes
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }
