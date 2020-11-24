@@ -116,9 +116,9 @@ public class Cart {
         m_aCart.add(cartProduct);
     }
 
-    public void removeProductFromCart(Product p_pProduct, int p_iProductQuantity) {
-        m_aCart.remove(p_pProduct);
-    } // todo a vérifier: quantité de produits, ne pas tout supprimer d'un coup
+//    public void removeProductFromCart(Product p_pProduct, int p_iProductQuantity) {
+//        m_aCart.remove(p_pProduct);
+//    } // todo a vérifier: quantité de produits, ne pas tout supprimer d'un coup
 
     public void removeAllProducts() {
 //        m_aCart.clear();

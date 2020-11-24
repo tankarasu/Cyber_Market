@@ -22,7 +22,7 @@ public class UserDatabase {
     // getters
     // -------------------------------------------------
 
-    public static ArrayList<User> getM_aUserList() {
+    public  ArrayList<User> getM_aUserList() {
         return m_aUserList;
     }
 

@@ -70,7 +70,7 @@ public class Menu {
                         Auth.isUserRegistered(clientDatabase);
                 if (clientIndex != -1) {
 //                    Client currentClient = clientDatabase.getM_aUserList().get(clientIndex);
-                    ClientInterface.ChoiceMenu(myMarket,clientDatabase.getM_aUserList().get(clientIndex));
+                    ClientInterface.ChoiceMenu(myMarket, clientDatabase.getM_aUserList().get(clientIndex));
                 } else {
                     System.out.println("You are not registered\n try again");
                     chooseRole();
@@ -82,22 +82,12 @@ public class Menu {
                 int adminIndex =
                         Auth.isUserRegistered(adminDatabase);
                 if (adminIndex != -1) {
-                    // là où l'on va gérer le menu Admin
-                   // ClientInterface.ChoiceMenu(myMarket,
-                   //         clientDatabase.getM_aUserList().get(clientIndex));
-                    System.out.println("You are registred Connard !!!");
+                    AdminInterface.ChoiceMenu(myMarket);
                 } else {
                     System.out.println("You are not registered\n try again");
-//                    chooseRole();
+                    chooseRole();
                     // todo première verif sur la récursivité ok
                 }
-                // verification de l'admin & passWord
-                // error Handling
-                // passWord incorrect
-                // passWord vide
-                // name n'existe pas
-                // accès au menu AdminInterface
-                // si Non Admin -> Paire Nom/Password pas bon en message
                 break;
             case "3":
                 // création d'un nouvel Client
@@ -110,7 +100,8 @@ public class Menu {
                 // todo option demande mail
                 // ajout de l'user à la ClientDatabase
                 // retour au présent menu
-                Auth.createAccount();
+                Auth.createAccount(clientDatabase);
+                chooseRole();
                 break;
             case "4":
                 System.out.println("Au revoir et à bientôt cher Utilisateur");

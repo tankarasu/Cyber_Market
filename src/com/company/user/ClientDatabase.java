@@ -8,8 +8,6 @@ public class ClientDatabase extends UserDatabase {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-//    private final ArrayList<Client> m_aUserList = new ArrayList<>();
-    // todo est ce que le final gène ?
 
     // -------------------------------------------------
     // constructor

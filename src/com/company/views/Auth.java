@@ -6,7 +6,9 @@ import com.company.user.ClientDatabase;
 import com.company.user.User;
 import com.company.user.UserDatabase;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Auth {
     // -------------------------------------------------
@@ -78,12 +80,29 @@ public class Auth {
         return -1;
     }
 
-    public static void createAccount() {
-        System.out.println("Account created");
-
+    public static void createAccount(ClientDatabase clientDatabase) {
+        String name;
+        String password;
         String regexPassword =
-                "^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*[0-9a-zA-Z@!:;_-]{6,}$";
+                "^(?=.*\\d)(?=.*[a-zA-Z])(?=.*[A-Za-z])(?=.*[a-zA-Z]).{6,}";
         String regexName = "^[a-zA-Z\\s'\\-\\pL]+$"; // todo check ?
+
+        System.out.println("Création de compte utilisateur");
+
+        do {
+            System.out.println("Veuillez entrez votre nom:");
+            name = userInput.nextLine();
+        } while (!Pattern.matches(regexName, name));
+
+        do {
+            System.out.println("Veuillez entrez un mot de passe");
+            password = userInput.nextLine();
+        } while (!Pattern.matches(regexPassword, password));
+
+        // todo confirmez mot de passe
+        // todo donnez une description du mot de passe attendu
+        Client newClient = new Client(name, password);
+        clientDatabase.getM_aUserList().add(newClient);
     }
 
     // -------------------------------------------------
