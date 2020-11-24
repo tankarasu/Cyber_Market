@@ -4,11 +4,11 @@ import com.company.store.Product;
 
 import java.util.ArrayList;
 
-public class ClientDatabase {
+public class ClientDatabase extends UserDatabase {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    private final ArrayList<Client> m_aClientList = new ArrayList<>();
+//    private final ArrayList<Client> m_aUserList = new ArrayList<>();
     // todo est ce que le final gène ?
 
     // -------------------------------------------------
@@ -18,8 +18,8 @@ public class ClientDatabase {
     public ClientDatabase() {
         Client clientOne = new Client("John", "AZERTY1");
         Client clientTwo = new Client("Janet", "QWERTY1");
-        getClientList().add(clientOne);
-        getClientList().add(clientTwo);
+        getM_aUserList().add(clientOne);
+        getM_aUserList().add(clientTwo);
     }
 
     // -------------------------------------------------
@@ -30,9 +30,6 @@ public class ClientDatabase {
     // getters
     // -------------------------------------------------
 
-    public ArrayList<Client> getClientList() {
-        return m_aClientList;
-    }
 
     // -------------------------------------------------
     // setters

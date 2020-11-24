@@ -1,25 +1,31 @@
 package com.company.user;
 
-public class User {
+import java.util.ArrayList;
+
+public class AdminDatabase extends UserDatabase {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
     private String m_sName;
     private String m_sPassword;
+//    private static final ArrayList<Admin> m_aUserList = new ArrayList<>();
+
+    // todo est ce que le final gène ?
+
     // -------------------------------------------------
-    //constructor
+    // constructor
     // -------------------------------------------------
 
-    public User() {
-
+    public AdminDatabase() {
+        Admin admin = new Admin();
+        admin.setPassword("Root");
+        admin.setName("Admin");
+        getM_aUserList().add(admin);
     }
 
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
-
-    // public void choiceMenu
-    // todo repenser à la refacto
 
     // -------------------------------------------------
     // getters
@@ -34,20 +40,10 @@ public class User {
     }
 
 
+
     // -------------------------------------------------
     // setters
     // -------------------------------------------------
 
 
-    public void setName(String m_sName) {
-        this.m_sName = m_sName;
-    }
-
-    public void setPassword(String m_sPassword) {
-        this.m_sPassword = m_sPassword;
-    }
-
-    public Cart getMyCart() {
-        return null;
-    }
 }

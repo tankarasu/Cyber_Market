@@ -2,7 +2,6 @@ package com.company.views;
 
 import com.company.store.Market;
 
-import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.util.Scanner;
 
 public class AdminInterface {
@@ -31,7 +30,7 @@ public class AdminInterface {
             choice = userInput.next();
             switch (choice) {
                 case "1":
-                    myMarket.getStore();
+                    myMarket.getProductList();
                     break;
                 case "2":
                     myMarket.addProductMenu();

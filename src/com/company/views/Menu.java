@@ -2,6 +2,7 @@ package com.company.views;
 
 import com.company.store.Market;
 import com.company.user.Admin;
+import com.company.user.AdminDatabase;
 import com.company.user.Client;
 import com.company.user.ClientDatabase;
 
@@ -15,6 +16,7 @@ public class Menu {
 
     static Scanner userInput = new Scanner(System.in);
     static ClientDatabase clientDatabase = new ClientDatabase();
+    static AdminDatabase adminDatabase = new AdminDatabase();
     static Market myMarket = new Market();
 
     // -------------------------------------------------
@@ -65,11 +67,10 @@ public class Menu {
         switch (choice) {
             case "1":
                 int clientIndex =
-                        Auth.isClientRegistered(clientDatabase);
+                        Auth.isUserRegistered(clientDatabase);
                 if (clientIndex != -1) {
-                    Client currentClient = clientDatabase.getClientList().get(clientIndex);
-                    System.out.println("index client: " + clientIndex);
-                    ClientInterface.ChoiceMenu(myMarket,currentClient);
+//                    Client currentClient = clientDatabase.getM_aUserList().get(clientIndex);
+                    ClientInterface.ChoiceMenu(myMarket,clientDatabase.getM_aUserList().get(clientIndex));
                 } else {
                     System.out.println("You are not registered\n try again");
                     chooseRole();
@@ -77,7 +78,19 @@ public class Menu {
                 }
                 break;
             case "2":
-                Auth.isAdminRegistered(myMarket);
+                System.out.println("ici !");
+                int adminIndex =
+                        Auth.isUserRegistered(adminDatabase);
+                if (adminIndex != -1) {
+                    // là où l'on va gérer le menu Admin
+                   // ClientInterface.ChoiceMenu(myMarket,
+                   //         clientDatabase.getM_aUserList().get(clientIndex));
+                    System.out.println("You are registred Connard !!!");
+                } else {
+                    System.out.println("You are not registered\n try again");
+//                    chooseRole();
+                    // todo première verif sur la récursivité ok
+                }
                 // verification de l'admin & passWord
                 // error Handling
                 // passWord incorrect

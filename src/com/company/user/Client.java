@@ -98,8 +98,7 @@ public class Client extends User {
 
         // on ajoute la Q au cart
         client.myCart.addProductToCart(currentProduct, quantityToAdd);
-        // je veux voir (to delete) ce que contient le Cart
-        client.myCart.getCart();
+
         // on déduit la quantité du stock
         Product storeProduct = myMarket.getTheStore().get(index);
         storeProduct.setQuantity(storeProduct.getQuantity() - quantityToAdd);

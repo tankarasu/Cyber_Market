@@ -1,53 +1,36 @@
 package com.company.user;
 
-public class User {
+import java.util.ArrayList;
+
+public class UserDatabase {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    private String m_sName;
-    private String m_sPassword;
+    private static ArrayList<User> m_aUserList = new ArrayList<>();
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
 
-    public User() {
-
+    public UserDatabase() {
     }
 
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
 
-    // public void choiceMenu
-    // todo repenser à la refacto
-
     // -------------------------------------------------
     // getters
     // -------------------------------------------------
 
-    public String getName() {
-        return m_sName;
+    public static ArrayList<User> getM_aUserList() {
+        return m_aUserList;
     }
-
-    public String getPassword() {
-        return m_sPassword;
-    }
-
 
     // -------------------------------------------------
     // setters
     // -------------------------------------------------
 
-
-    public void setName(String m_sName) {
-        this.m_sName = m_sName;
-    }
-
-    public void setPassword(String m_sPassword) {
-        this.m_sPassword = m_sPassword;
-    }
-
-    public Cart getMyCart() {
-        return null;
+    public void setM_aUserList(ArrayList<User> m_aUserList) {
+        this.m_aUserList = m_aUserList;
     }
 }

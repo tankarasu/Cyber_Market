@@ -3,6 +3,7 @@ package com.company.views;
 import com.company.store.Market;
 import com.company.store.Product;
 import com.company.user.Client;
+import com.company.user.User;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -27,7 +28,7 @@ public class ClientInterface {
     // méthodes
     // -------------------------------------------------
     // todo Rajouter case 0 return depuis productlist
-    public static void ChoiceMenu(Market myMarket, Client client) {
+    public static void ChoiceMenu(Market myMarket, User client) {
         System.out.println("Welcome " + client.getName() + "\n");
         Product baguette = new Product("baguette", 42, 2);
         String choice;
@@ -43,15 +44,15 @@ public class ClientInterface {
 
         switch (choice) {
             case "1":
-                myMarket.getStore();
-                Client.clientStoreChoice(myMarket,client);
+                myMarket.getProductList();
+                Client.clientStoreChoice(myMarket, (Client) client);
                 ChoiceMenu(myMarket,client);
                 // verifier si présence du produit dans Panier todo remanier
                 //  boucle
                 break;
             case "2":
                 // todo case cart empty
-                client.getMyCart().getCart();
+                client.getMyCart().getCart(myMarket);
                 ChoiceMenu(myMarket,client);
                 break;
             case "3":

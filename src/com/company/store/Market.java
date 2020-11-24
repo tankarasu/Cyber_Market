@@ -63,13 +63,12 @@ public class Market {
         System.out.println("Product added");
     }
 
-    public String getStore() {
+    public String getProductList() {
         for (Product product : m_aStore) {
             int index = m_aStore.indexOf(product);
             System.out.println((index + 1) + " - " + product.getName() + " " +
                     "Quantity:" + product.getQuantity() + " price:" + product.getPrice());
         }
-        //si on ne choisit pas de produit direction
         return null;
     }
 
@@ -82,9 +81,6 @@ public class Market {
         System.out.println(result);
     }
 
-    public void listAllProduct() {
-        System.out.println("Il y a 5 produits dans le store");
-    }
     // -------------------------------------------------
     // getters
     // -------------------------------------------------

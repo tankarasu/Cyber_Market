@@ -3,6 +3,8 @@ package com.company.views;
 import com.company.store.Market;
 import com.company.user.Client;
 import com.company.user.ClientDatabase;
+import com.company.user.User;
+import com.company.user.UserDatabase;
 
 import java.util.Scanner;
 
@@ -27,20 +29,21 @@ public class Auth {
         AdminInterface.ChoiceMenu(myMarket);
     }
 
-    public static int isClientRegistered(
-            ClientDatabase clientDatabase) {
+    public static int isUserRegistered(
+            UserDatabase userDatabase) {
         String name = "";
         String password = "";
-        int index=0;
+        int index = 0;
 
         // todo verifier les scanner avec nextLine
         // checking the name
         System.out.println("What's your name Sir?");
         name = userInput.next();
 
-        boolean dbName = false;
-        for (Client client : clientDatabase.getClientList()) {
-            if (client.getName().equals(name)) {
+        boolean dbName = false; // false nom non présent dans la db
+//        for (int i = 0; i < userDatabase.getM_aUserList().size(); i++) {
+        for (User user : userDatabase.getM_aUserList()) {
+            if (user.getName().equals(name)) {
                 dbName = true;
                 break;
             }
@@ -55,10 +58,10 @@ public class Auth {
         password = userInput.next();
 
         boolean isRegistred = false;
-        for (Client client : clientDatabase.getClientList()) {
-            if ((client.getPassword().equals(password))
-                    & (client.getName().equals(name))) {
-                index=clientDatabase.getClientList().indexOf(client);
+        for (User user : userDatabase.getM_aUserList()) {
+            if ((user.getPassword().equals(password))
+                    & (user.getName().equals(name))) {
+                index = userDatabase.getM_aUserList().indexOf(user);
                 isRegistred = true;
                 break;
             }
