@@ -15,6 +15,7 @@ public class Menu {
 
     static Scanner userInput = new Scanner(System.in);
     static ClientDatabase clientDatabase = new ClientDatabase();
+    static Market myMarket = new Market();
 
     // -------------------------------------------------
     //constructor
@@ -42,7 +43,6 @@ public class Menu {
      * pair, u can create an account if u don't have one.
      */
     public static void chooseRole() {
-        Market myMarket = new Market();
         StringBuilder loggingOption = new StringBuilder("");
 
         loggingOption

@@ -44,14 +44,15 @@ public class ClientInterface {
         switch (choice) {
             case "1":
                 myMarket.getStore();
-                // todo choisir l'article voulu
-                Client.clientStoreChoice(myMarket);// à améliorer
-                System.out.println("Sortie de la boucle des produits " +
-                        "spécifiques");
-                //Client.selectProduct(baguette);
+                Client.clientStoreChoice(myMarket,client);
+                ChoiceMenu(myMarket,client);
+                // verifier si présence du produit dans Panier todo remanier
+                //  boucle
                 break;
             case "2":
-                // client.getMyCart().getCart();
+                // todo case cart empty
+                client.getMyCart().getCart();
+                ChoiceMenu(myMarket,client);
                 break;
             case "3":
                 Menu.chooseRole();

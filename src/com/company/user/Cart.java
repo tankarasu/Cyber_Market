@@ -1,8 +1,6 @@
 package com.company.user;
 
-import com.company.store.Market;
 import com.company.store.Product;
-import com.company.views.Menu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,8 +9,8 @@ public class Cart {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    static ArrayList<Product> m_aCart;
-    static Scanner userInput;
+    public ArrayList<Product> m_aCart;
+    public Scanner userInput;
 
     // -------------------------------------------------
     // constructor
@@ -20,6 +18,7 @@ public class Cart {
 
     public Cart() {
         m_aCart = new ArrayList<>();
+        // todo bien instancier les cart
     }
 
     // -------------------------------------------------
@@ -71,8 +70,8 @@ public class Cart {
         m_aCart.remove(p_pProduct);
     } // todo a vérifier: quantité de produits, ne pas tout supprimer d'un coup
 
-    private static void removeAllProducts() {
-        m_aCart.clear();
+    public void removeAllProducts() {
+//        m_aCart.clear();
         System.out.println("Your cart is now empty");
     }
 

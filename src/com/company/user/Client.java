@@ -12,7 +12,7 @@ public class Client extends User {
     // -------------------------------------------------
 
     private static final Scanner userInput = new Scanner(System.in);
-    private static Cart myCart;
+    private Cart myCart;
 
 
     // -------------------------------------------------
@@ -20,7 +20,7 @@ public class Client extends User {
     // -------------------------------------------------
 
     public Client(String p_sName, String p_sPassword) {
-        myCart = new Cart(); // à voir
+        myCart=new Cart(); // à voir todo
         setName(p_sName);
         setPassword(p_sPassword);
     }
@@ -49,7 +49,7 @@ public class Client extends User {
     }
 
     // displaying selected product informations
-    public static void clientStoreChoice(Market myMarket) {
+    public static void clientStoreChoice(Market myMarket, Client client) {
         String numberRegex = "^[ ]?[0-9]\\d*[ ]?$";
         String choice;
         Product currentProduct;
@@ -97,9 +97,9 @@ public class Client extends User {
         }
 
         // on ajoute la Q au cart
-        myCart.addProductToCart(currentProduct, quantityToAdd);
+        client.myCart.addProductToCart(currentProduct, quantityToAdd);
         // je veux voir (to delete) ce que contient le Cart
-        myCart.getCart();
+        client.myCart.getCart();
         // on déduit la quantité du stock
         Product storeProduct = myMarket.getTheStore().get(index);
         storeProduct.setQuantity(storeProduct.getQuantity() - quantityToAdd);
