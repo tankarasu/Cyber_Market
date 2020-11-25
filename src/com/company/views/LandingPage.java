@@ -10,7 +10,7 @@ public class LandingPage extends JFrame {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-
+    public static String role = "";
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -93,24 +93,27 @@ public class LandingPage extends JFrame {
         clientLogButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                role = "client";
                 panel.setVisible(false);
-                AuthenticationPage.ShowGUI();
+                AuthenticationPage.ShowGUI(role);
             }
         });
 
         adminLogButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                role = "admin";
                 panel.setVisible(false);
-                AuthenticationPage.ShowGUI();
+                AuthenticationPage.ShowGUI(role);
             }
         });
 
         createAccountButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                role = "Create";
                 panel.setVisible(false);
-                AuthenticationPage.ShowGUI();
+                AuthenticationPage.ShowGUI(role);
             }
         });
 

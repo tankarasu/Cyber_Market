@@ -56,7 +56,6 @@ public class ClientInterface {
                 ChoiceMenu(myMarket,client);
                 break;
             case "3":
-                Menu.chooseRole();
                 break;
         }
     }

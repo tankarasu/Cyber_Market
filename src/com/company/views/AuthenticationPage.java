@@ -1,5 +1,8 @@
 package com.company.views;
 
+import com.company.user.AdminDatabase;
+import com.company.user.ClientDatabase;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +12,8 @@ public class AuthenticationPage extends JFrame {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-
+    static ClientDatabase clientDatabase = new ClientDatabase();
+    static AdminDatabase adminDatabase = new AdminDatabase();
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -22,18 +26,18 @@ public class AuthenticationPage extends JFrame {
     // -------------------------------------------------
 
 
-    public static void ShowGUI() {
+    public static void ShowGUI(String role) {
         JFrame frame = new JFrame("Authentication Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame);
+        addComponentsToFrame(frame, role);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel) {
+    public static void addComponentsToFrame(Container panel, String role) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -81,8 +85,42 @@ public class AuthenticationPage extends JFrame {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                ClientInterface_Page.ShowGUI();
+                int index = 0;
+                // client log in
+                if (role.equals("client")) {
+                    index = Auth.isUserRegistered(
+                            clientDatabase,
+                            nameField.getText(),
+                            passwordField.getText());
+                    if (index == -1) {
+                        AuthenticationPage.ShowGUI("client");
+                    } else {
+                        panel.setVisible(false);
+                        ClientInterface_Page.ShowGUI();
+                    }
+                    // Admin log in
+                } else if (role.equals("admin")) {
+                    index = Auth.isUserRegistered(
+                            adminDatabase,
+                            nameField.getText(),
+                            passwordField.getText());
+                    if (index == -1) {
+                        AuthenticationPage.ShowGUI("client");
+                    } else {
+                        panel.setVisible(false);
+                        AdminInterface_Page.ShowGUI();
+                    }
+                } else {
+                    // create an account
+                    Auth.createAccount(
+                            clientDatabase,
+                            nameField.getText(),
+                            passwordField.getText());
+                    nameField.setText("");
+                    passwordField.setText("");
+                }
+                // todo Errors Handling
+
             }
         });
 
