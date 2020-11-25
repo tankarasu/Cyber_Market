@@ -1,7 +1,9 @@
 package com.company;
 
-import com.company.views.LandingPage;
-import com.company.views.Menu;
+import com.company.store.ProductList_Page;
+import com.company.views.AdminInterface;
+import com.company.views.AdminInterface_Page;
+import com.company.views.ClientInterface_Page;
 
 import javax.swing.*;
 
@@ -18,7 +20,10 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                LandingPage.ShowGUI();
+                //LandingPage.ShowGUI();
+                //ClientInterface_Page.ShowGUI();
+                //AdminInterface_Page.ShowGUI();
+                ProductList_Page.ShowGUI();
             }
         });
     }

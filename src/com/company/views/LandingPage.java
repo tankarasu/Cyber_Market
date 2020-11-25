@@ -22,6 +22,8 @@ public class LandingPage extends JFrame {
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
+
+
     public static void ShowGUI() {
         JFrame frame = new JFrame("Landing Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -31,7 +33,6 @@ public class LandingPage extends JFrame {
         addComponentsToFrame(frame);
 
         frame.setVisible(true);
-
     }
 
     public static void addComponentsToFrame(Container panel) {
