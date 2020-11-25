@@ -16,7 +16,7 @@ public class Product_Page extends JFrame {
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame,product);
+        addComponentsToFrame(frame, product);
 
         frame.setVisible(true);
     }
@@ -36,25 +36,39 @@ public class Product_Page extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        panel.add(productTitle,gbc);
+        panel.add(productTitle, gbc);
 
         //jlabel produit unitaire concaténé
-        JLabel price = new JLabel("Unit price : "+String.valueOf(product.getPrice()));
-
+        JLabel price = new JLabel("Unit price : " + String.valueOf(product.getPrice()));
         gbc.gridy = 1;
 
-        panel.add(price,gbc);
+        panel.add(price, gbc);
 
 
         //jlabel quantité
-        JLabel quantity = new JLabel("Available quantity : "+String.valueOf(product.getQuantity()));
-
+        JLabel quantity = new JLabel("Available quantity : " + String.valueOf(product.getQuantity()));
         gbc.gridy = 2;
 
-        panel.add(quantity,gbc);
+        panel.add(quantity, gbc);
 
         //jtextfield entrer qté
         JTextField inputQuantity = new JTextField();
+        gbc.gridy = 3;
+
+        panel.add(inputQuantity);
+
+        // bouton add to Cart
+        JButton addToCart = new JButton("Add to Cart");
+        gbc.gridy = 4;
+
+        panel.add(addToCart, gbc);
+
+        // button return
+        JButton returnButton = new JButton("Return");
+        gbc.gridy = 5;
+
+        panel.add(returnButton, gbc);
+
 
     }
 }

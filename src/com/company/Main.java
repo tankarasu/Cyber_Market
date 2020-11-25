@@ -3,6 +3,7 @@ package com.company;
 import com.company.store.ProductList_Page;
 import com.company.views.AdminInterface;
 import com.company.views.AdminInterface_Page;
+import com.company.views.AdminProductList_Page;
 import com.company.views.ClientInterface_Page;
 
 import javax.swing.*;
@@ -23,7 +24,8 @@ public class Main {
                 //LandingPage.ShowGUI();
                 //ClientInterface_Page.ShowGUI();
                 //AdminInterface_Page.ShowGUI();
-                ProductList_Page.ShowGUI();
+//                ProductList_Page.ShowGUI();
+                AdminProductList_Page.ShowGUI();
             }
         });
     }
