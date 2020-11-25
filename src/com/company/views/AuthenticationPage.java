@@ -1,13 +1,11 @@
-package com.company.user;
-
-import com.company.views.ClientInterface_Page;
+package com.company.views;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Cart_Page extends JFrame {
+public class AuthenticationPage extends JFrame {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
@@ -16,15 +14,16 @@ public class Cart_Page extends JFrame {
     //constructor
     // -------------------------------------------------
 
-    public Cart_Page() {
+    public AuthenticationPage() throws HeadlessException {
     }
 
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
 
+
     public static void ShowGUI() {
-        JFrame frame = new JFrame("My Cart");
+        JFrame frame = new JFrame("Authentication Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
@@ -39,44 +38,63 @@ public class Cart_Page extends JFrame {
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Label title
-        JLabel titleLabel = new JLabel("The Cart");
+        // label
+        JLabel nameLabel = new JLabel("user name: ");
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridx = 0;
         gbc.gridy = 1;
 
-        panel.add(titleLabel, gbc);
+        panel.add(nameLabel, gbc);
 
-        // Buy all product button
-        JButton buyAllButton = new JButton("Buy all Products");
+        // textField Nom
+        JTextField nameField = new JTextField(15);
         gbc.gridy = 2;
 
-        panel.add(buyAllButton, gbc);
+        panel.add(nameField, gbc);
 
-        // Remove all product button
-        JButton removeAllButton = new JButton("Remove all Products");
+        // label Password
+        JLabel password = new JLabel("password: ");
         gbc.gridy = 3;
 
-        panel.add(removeAllButton, gbc);
+        panel.add(password, gbc);
 
-        // Return button
-        JButton returnButton = new JButton("Return");
+        // Textfield Password
+        JTextField passwordField = new JTextField(15);
         gbc.gridy = 4;
+
+        panel.add(passwordField, gbc);
+
+        // submit
+        JButton submit = new JButton("Log in");
+        gbc.gridy = 5;
+
+        panel.add(submit, gbc);
+
+        // submit
+        JButton returnButton = new JButton("Return");
+        gbc.gridy = 6;
 
         panel.add(returnButton, gbc);
 
-        // modal confirm pay + total to pay
-        // todo  JOptionPane confirmPay = new JOptionPane();
-
-        returnButton.addActionListener(new ActionListener() {
+        // Event listeners
+        submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
                 ClientInterface_Page.ShowGUI();
             }
         });
+
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                LandingPage.ShowGUI();
+            }
+        });
     }
+
     // -------------------------------------------------
     // getters
     // -------------------------------------------------

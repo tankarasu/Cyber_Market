@@ -27,18 +27,7 @@ public class Menu {
     // méthodes
     // -------------------------------------------------
 
-    /**
-     * Landing page of the application
-     * User can be connect like Client or Administrator
-     */
-    public static void startApp() {
-        String welcomeMessage =
-                "-------------------------\n" +
-                        "Bienvenue au Cyber Market\n" +
-                        "-------------------------";
-        System.out.println(welcomeMessage);
-        chooseRole();
-    }
+
 
     /**
      * with this method you choose the role you play with your logIn/password

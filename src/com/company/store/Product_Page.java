@@ -2,6 +2,8 @@ package com.company.store;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Product_Page extends JFrame {
     Product product;
@@ -25,9 +27,6 @@ public class Product_Page extends JFrame {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
-        //jbutton add to cart
-        //jbutton return
-
 
         //jlabel title produit
         JLabel productTitle = new JLabel(product.getName());
@@ -68,6 +67,14 @@ public class Product_Page extends JFrame {
         gbc.gridy = 5;
 
         panel.add(returnButton, gbc);
+
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                ProductList_Page.ShowGUI();
+            }
+        });
 
 
     }

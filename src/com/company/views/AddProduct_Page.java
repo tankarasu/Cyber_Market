@@ -2,6 +2,8 @@ package com.company.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AddProduct_Page extends JFrame {
 
@@ -77,6 +79,14 @@ public class AddProduct_Page extends JFrame {
         JButton cancelButton = new JButton("Return");
         gbc.gridy = 7;
         panel.add(cancelButton, gbc);
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                AdminInterface_Page.ShowGUI();
+            }
+        });
     }
     // -------------------------------------------------
     // getters

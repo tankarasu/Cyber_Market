@@ -89,6 +89,31 @@ public class LandingPage extends JFrame {
         panel.add(exitButton, gbc);
 
         // Events Listeners on button
+
+        clientLogButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                AuthenticationPage.ShowGUI();
+            }
+        });
+
+        adminLogButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                AuthenticationPage.ShowGUI();
+            }
+        });
+
+        createAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                AuthenticationPage.ShowGUI();
+            }
+        });
+
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

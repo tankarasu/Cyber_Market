@@ -36,7 +36,7 @@ public class AdminInterface {
                     myMarket.addProductMenu();
                     break;
                 case "3":
-                    Menu.startApp();
+                   // Menu.startApp();
                     return;
                 case "4":
                     break;

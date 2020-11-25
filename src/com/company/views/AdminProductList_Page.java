@@ -5,6 +5,8 @@ import com.company.store.Product;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class AdminProductList_Page extends JFrame {
@@ -72,7 +74,25 @@ public class AdminProductList_Page extends JFrame {
             gbc.gridx = 0;
             gbc.gridy = index;
             panel.add(productButton, gbc);
+
+            productButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    panel.setVisible(false);
+                LandingPage.ShowGUI();
+                }
+            });
         }
+
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                AdminInterface_Page.ShowGUI();
+            }
+        });
+
+        // modal product successfully added
     }
     // -------------------------------------------------
     // getters

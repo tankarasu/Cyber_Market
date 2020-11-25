@@ -1,7 +1,11 @@
 package com.company.store;
 
+import com.company.views.ClientInterface_Page;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ProductList_Page extends JFrame {
@@ -46,12 +50,27 @@ public class ProductList_Page extends JFrame {
         Market productListMarket = new Market();
         ArrayList<Product> store = productListMarket.getTheStore();
         int index = 1;
-        for(Product product:store){
+        for (Product product : store) {
             index++;
             JButton productButton = new JButton(product.getName());
-            gbc.gridx=0;
-            gbc.gridy=index;
-            panel.add(productButton,gbc);
+            gbc.gridx = 0;
+            gbc.gridy = index;
+            panel.add(productButton, gbc);
+
+            productButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    panel.setVisible(false);
+                    Product_Page.ShowGUI(product);
+                }
+            });
         }
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                ClientInterface_Page.ShowGUI();
+            }
+        });
     }
 }

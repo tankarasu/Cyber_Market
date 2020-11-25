@@ -2,6 +2,8 @@ package com.company.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AdminInterface_Page extends JFrame {
 
@@ -68,5 +70,29 @@ public class AdminInterface_Page extends JFrame {
         gbc.gridy = 4;
 
         panel.add(logOutButton, gbc);
+
+        productListButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                AdminProductList_Page.ShowGUI();
+            }
+        });
+
+        addProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                AddProduct_Page.ShowGUI();
+            }
+        });
+
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setVisible(false);
+                LandingPage.ShowGUI();
+            }
+        });
     }
 }

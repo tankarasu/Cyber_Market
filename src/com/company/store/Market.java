@@ -23,8 +23,6 @@ public class Market {
     public Market() {
         m_aStore.add(baguette);
         m_aStore.add(pain);
-        System.out.println(m_aStore);
-
     }
 
     // -------------------------------------------------
