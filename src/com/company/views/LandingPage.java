@@ -1,9 +1,9 @@
 package com.company.views;
 
-import com.company.SpringUtilities;
-
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LandingPage extends JFrame {
 
@@ -49,6 +49,7 @@ public class LandingPage extends JFrame {
         panel.add(titleLabel, gbc);
 
         // Log Client
+        // spacing after the text in button adjust the size of the button
         JButton clientLogButton = new JButton("Log in as Client     ");
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
@@ -58,6 +59,7 @@ public class LandingPage extends JFrame {
         panel.add(clientLogButton, gbc);
 
         // Log Admin
+        // spacing after the text in button adjust the size of the button
         JButton adminLogButton = new JButton("Log in as Admin    ");
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
@@ -76,6 +78,7 @@ public class LandingPage extends JFrame {
         panel.add(createAccountButton, gbc);
 
         // Exit
+        // spacing after the text in button adjust the size of the button
         JButton exitButton = new JButton("Exit program         ");
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
@@ -84,6 +87,13 @@ public class LandingPage extends JFrame {
 
         panel.add(exitButton, gbc);
 
+        // Events Listeners on button
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
     // -------------------------------------------------
     // getters
