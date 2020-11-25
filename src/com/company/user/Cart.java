@@ -61,7 +61,13 @@ public class Cart {
             case "1":
                 // todo sales history
                 Order order = new Order(client.getName(), m_aCart);
-myMarket.addOrder();
+                //OrderList.orderArrayList.add(order);
+                //OrderList.displayOrders();
+
+                //todo fix Orderlist later
+
+
+                //myMarket.orderList.displayOrders();
                 m_aCart.clear();
                 System.out.println("Your cart has been processed, you will " +
                         "receive your articles soon");

@@ -40,7 +40,7 @@ public class LandingPage extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         // title label
-        JLabel titleLabel = new JLabel("Welcome dear User");
+        JLabel titleLabel = new JLabel("Welcome to the Cyber Marketan dear User");
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridx = 0;

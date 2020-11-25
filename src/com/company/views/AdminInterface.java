@@ -26,7 +26,7 @@ public class AdminInterface {
         String choice;
         do {
             System.out.println("What do you want to do ?");
-            System.out.println("1-List products\n2-Add a Product\n3-Return");
+            System.out.println("1-List products\n2-Add a Product\n3-Return\n4-Display Orders");
             choice = userInput.next();
             switch (choice) {
                 case "1":
@@ -38,6 +38,8 @@ public class AdminInterface {
                 case "3":
                     Menu.startApp();
                     return;
+                case "4":
+                    break;
             }
             choice="";
         } while (!choice.equalsIgnoreCase("1") & !choice.equalsIgnoreCase("2") & !choice.equalsIgnoreCase("3"));
