@@ -1,6 +1,8 @@
 package com.company.user;
 
 import com.company.store.Market;
+import com.company.store.Order;
+import com.company.store.OrderList;
 import com.company.store.Product;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class Cart {
     public ArrayList<Product> m_aCart;
     public Scanner userInput = new Scanner(System.in);
 
+
     // -------------------------------------------------
     // constructor
     // -------------------------------------------------
@@ -26,7 +29,7 @@ public class Cart {
     // méthodes
     // -------------------------------------------------
 
-    public void getCart(Market myMarket) {
+    public void getCart(Market myMarket, User client) {
         // todo case panier vide
 
         System.out.println("Panier");
@@ -57,6 +60,8 @@ public class Cart {
         switch (choice) {
             case "1":
                 // todo sales history
+                Order order = new Order(client.getName(), m_aCart);
+myMarket.addOrder();
                 m_aCart.clear();
                 System.out.println("Your cart has been processed, you will " +
                         "receive your articles soon");

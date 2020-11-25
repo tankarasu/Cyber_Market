@@ -69,16 +69,13 @@ public class Menu {
                 int clientIndex =
                         Auth.isUserRegistered(clientDatabase);
                 if (clientIndex != -1) {
-//                    Client currentClient = clientDatabase.getM_aUserList().get(clientIndex);
                     ClientInterface.ChoiceMenu(myMarket, clientDatabase.getM_aUserList().get(clientIndex));
                 } else {
                     System.out.println("You are not registered\n try again");
                     chooseRole();
-                    // todo première verif sur la récursivité ok
                 }
                 break;
             case "2":
-                System.out.println("ici !");
                 int adminIndex =
                         Auth.isUserRegistered(adminDatabase);
                 if (adminIndex != -1) {
@@ -86,7 +83,6 @@ public class Menu {
                 } else {
                     System.out.println("You are not registered\n try again");
                     chooseRole();
-                    // todo première verif sur la récursivité ok
                 }
                 break;
             case "3":

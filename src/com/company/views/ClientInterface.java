@@ -52,7 +52,7 @@ public class ClientInterface {
                 break;
             case "2":
                 // todo case cart empty
-                client.getMyCart().getCart(myMarket);
+                client.getMyCart().getCart(myMarket,client);
                 ChoiceMenu(myMarket,client);
                 break;
             case "3":

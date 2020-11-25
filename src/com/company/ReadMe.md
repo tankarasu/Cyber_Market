@@ -12,3 +12,7 @@ The cyber market project
 ### Mode de programmation
 - projet codé avec le système du MOB programming.
 - repository commun et branche unique sur GITHUB et GIT.
+---
+### Description sommaire
+- LandingPage : GridBagLayout
+    - Exit: sort de l'Application
