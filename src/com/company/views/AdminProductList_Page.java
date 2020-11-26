@@ -49,12 +49,6 @@ public class AdminProductList_Page extends JFrame {
 
         // todo meilleurs ventes et ruptures de Stock todo
 
-        // add Product Button
-        JButton addProduct = new JButton("Add Product to Store");
-        gbc.gridy = 1;
-
-        panel.add(addProduct, gbc);
-
         //Log Out Button
         JButton returnButton = new JButton("Return");
 
@@ -74,8 +68,7 @@ public class AdminProductList_Page extends JFrame {
             panel.add(productButton, gbc);
 
             productButton.addActionListener(e -> {
-                panel.setVisible(false);
-            LandingPage.ShowGUI();
+                JOptionPane()
             });
         }
 

@@ -1,11 +1,11 @@
 package com.company.user;
 
+import com.company.store.Product;
 import com.company.views.ClientInterface_Page;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Cart_Page extends JFrame {
     // -------------------------------------------------
@@ -29,13 +29,14 @@ public class Cart_Page extends JFrame {
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame,client);
+        addComponentsToFrame(frame, client);
 
         frame.setVisible(true);
     }
 
     public static void addComponentsToFrame(Container panel,
                                             User client) {
+        ArrayList<Product> clientCart = client.getMyCart().m_aCart;
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -61,9 +62,31 @@ public class Cart_Page extends JFrame {
 
         panel.add(removeAllButton, gbc);
 
+        // affichage du Cart
+        JTextPane textPane = new JTextPane();
+        String textPaneText = "Your Cart is Empty";
+
+        for (Product product : clientCart) {
+            textPaneText = "";
+            int index = clientCart.indexOf(product);
+            textPaneText += (index + 1) + " - " + product.getName()
+                    + " Quantity:" + product.getQuantity()
+                    + " price: " + product.getPrice() + " €/unit\n";
+            textPaneText += "total: " + (product.getQuantity() * product.getPrice())
+                    + " €\n";
+
+        }
+        textPane.setText(textPaneText);
+        textPane.setEnabled(false);
+        gbc.gridy = 4;
+
+        panel.add(textPane, gbc);
+        // todo sales history
+        // todo fix Orderlist later
+
         // Return button
         JButton returnButton = new JButton("Return");
-        gbc.gridy = 4;
+        gbc.gridy = 5;
 
         panel.add(returnButton, gbc);
 
@@ -71,6 +94,21 @@ public class Cart_Page extends JFrame {
         // todo  JOptionPane confirmPay = new JOptionPane();
         // todo case cart empty
 
+        // Event listeners
+        // buy ALl products
+        buyAllButton.addActionListener(e -> {
+                    clientCart.clear();
+                    textPane.setText("Your cart has been processed, you will " +
+                            "receive your articles soon");
+                }
+        );
+
+        removeAllButton.addActionListener(e -> {
+                    clientCart.clear();
+                    textPane.setText("Your cart has been reseted and the " +
+                            "products go back to the store");
+                }
+        );
 
         returnButton.addActionListener(e -> {
             panel.setVisible(false);

@@ -7,13 +7,6 @@ import java.awt.event.ActionListener;
 
 public class AdminInterface_Page extends JFrame {
 
-    //Title (label)
-    //buttons : product list
-    //add product
-    //order history
-    //return
-
-
     public AdminInterface_Page() throws HeadlessException {
 
     }
@@ -34,7 +27,7 @@ public class AdminInterface_Page extends JFrame {
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
 
-        //Tantle label
+        //Title label
         JLabel titleLabel = new JLabel("Please select menu");
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;

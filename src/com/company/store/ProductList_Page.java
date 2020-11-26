@@ -7,6 +7,7 @@ import com.company.views.ClientInterface_Page;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class ProductList_Page extends JFrame {
 
@@ -40,24 +41,29 @@ public class ProductList_Page extends JFrame {
 
         panel.add(titleLabel, gbc);
 
+        // information text
+        JTextPane textPane = new JTextPane();
+        textPane.setText("Complementary info : ");
+        textPane.setEnabled(false);
+        gbc.weightx = 0.5;
+        gbc.gridy = 1;
+
+        panel.add(textPane, gbc);
+
         //Log Out Button
         JButton returnButton = new JButton("Return");
 
-        gbc.gridy = 1;
+        gbc.gridy = 2;
 
         panel.add(returnButton, gbc);
 
         //Creating product Buttons
         Market productListMarket = new Market();
         ArrayList<Product> store = productListMarket.getTheStore();
-        int index = 1;
+        int index = 2;
         for (Product product : store) {
+            int productIndex = productListMarket.getTheStore().indexOf(product);
             index++;
-            // initialise quantity array to display in JOptionPane
-            String[] displayQuantity = new String[product.getQuantity()];
-            for (int i = 0; i < product.getQuantity(); i++) {
-                displayQuantity[i] = String.valueOf(i + 1);
-            }
 
             JButton productButton = new JButton(product.getName());
             gbc.gridx = 0;
@@ -66,14 +72,38 @@ public class ProductList_Page extends JFrame {
 
             // selection of a Product
             productButton.addActionListener(e -> {
-                String productQuantity =
-                        (String) JOptionPane.showInputDialog(null,
-                                "How many product to add ?\n" + product.getQuantity() + " pieces available",
-                                "Add to cart", JOptionPane.PLAIN_MESSAGE);
+                String numberRegex = "^[ ]?[0-9]\\d*[ ]?$";
+                String productQuantity;
+
+                productQuantity = (String) JOptionPane.showInputDialog(null,
+                        "How many product to add ?\n",
+                        "Add to cart", JOptionPane.PLAIN_MESSAGE);
+
+                // validation du formulaire Q
+                // number isn't valid
+                if (!Pattern.matches(numberRegex, productQuantity)) {
+                    textPane.setText("Please enter a valid number");
+                    return;
+                }
+                if (Integer.parseInt(productQuantity) < 0) {
+                    textPane.setText("Please enter a valid number");
+                    return;
+                }
+
+                // number > available
+                if (Integer.parseInt(productQuantity) > product.getQuantity()) {
+                    textPane.setText("Quantité max: " + product.getQuantity()
+                            + " pieces\n" + product.getQuantity()
+                            + " will be added to the Cart");
+                    productQuantity = String.valueOf(product.getQuantity());
+                }
 
                 // ajout au cart
+
                 client.getMyCart().addProductToCart(product, Integer.parseInt(productQuantity));
-                product.setQuantity(product.getQuantity() - Integer.parseInt(productQuantity));
+
+                // retrait du stock
+                productListMarket.getTheStore().get(productIndex).setQuantity(product.getQuantity() - Integer.parseInt(productQuantity));
 
             });
         }
