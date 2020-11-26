@@ -1,9 +1,10 @@
 package com.company.views;
 
+import com.company.store.Market;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
 public class AddProduct_Page extends JFrame {
 
@@ -22,18 +23,18 @@ public class AddProduct_Page extends JFrame {
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
-    public static void ShowGUI() {
-        JFrame frame = new JFrame("Landing Page");
+    public static void ShowGUI(Market myMarket) {
+        JFrame frame = new JFrame("Add Product Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame);
+        addComponentsToFrame(frame, myMarket);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel) {
+    public static void addComponentsToFrame(Container panel, Market myMarket) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -43,49 +44,67 @@ public class AddProduct_Page extends JFrame {
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 0;
 
         panel.add(titleLabel, gbc);
 
         // label nom
         JLabel nameLabel = new JLabel("Name:");
-        gbc.gridy = 0;
+        gbc.gridy = 1;
         panel.add(nameLabel, gbc);
         // textField nom
-        JTextField nameField = new JTextField();
-        gbc.gridy = 1;
+        JTextField nameField = new JTextField(15);
+        gbc.gridy = 2;
         panel.add(nameField, gbc);
         // quantité
         JLabel quantityLabel = new JLabel("Quantity:");
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         panel.add(quantityLabel, gbc);
         // textField quantité
-        JTextField quantityField = new JTextField();
-        gbc.gridy = 3;
+        JTextField quantityField = new JTextField(15);
+        gbc.gridy = 4;
         panel.add(quantityField, gbc);
         // Prix
         JLabel priceLabel = new JLabel("Price:");
-        gbc.gridy = 4;
+        gbc.gridy = 5;
         panel.add(priceLabel, gbc);
         // textField prix
-        JTextField priceField = new JTextField();
-        gbc.gridy = 5;
+        JTextField priceField = new JTextField(15);
+        gbc.gridy = 6;
         panel.add(priceField, gbc);
         // confirm
         JButton submitButton = new JButton("Add");
-        gbc.gridy = 6;
+        gbc.gridy = 7;
         panel.add(submitButton, gbc);
         // return
         JButton cancelButton = new JButton("Return");
-        gbc.gridy = 7;
+        gbc.gridy = 8;
         panel.add(cancelButton, gbc);
+        // info field
+        JTextPane textPane = new JTextPane();
+        textPane.setText("");
+        gbc.gridy = 9;
+        panel.add(textPane);
 
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                AdminInterface_Page.ShowGUI();
+        submitButton.addActionListener(e -> {
+            String regexNumber = "[ ]?[0-9]+[ ]?$";
+            String name = nameField.getText();
+            String quantity = quantityField.getText();
+            String price = priceField.getText();
+            if (name.equals("") | quantity.equals("") | price.equals("")
+                    | quantity.equals("0") | price.equals("0")
+                    | Pattern.matches(regexNumber, quantity)
+                    | Pattern.matches(regexNumber, price)) {
+                textPane.setText(" You must provide all fields with valid " +
+                        "value");
+                return;
             }
+
+        });
+
+        cancelButton.addActionListener(e -> {
+            panel.setVisible(false);
+            AdminInterface_Page.ShowGUI(myMarket);
         });
     }
     // -------------------------------------------------

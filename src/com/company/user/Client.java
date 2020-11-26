@@ -1,5 +1,7 @@
 package com.company.user;
 
+import com.company.store.Market;
+
 public class Client extends User {
     // -------------------------------------------------
     // variables membres
@@ -11,8 +13,8 @@ public class Client extends User {
     //constructor
     // -------------------------------------------------
 
-    public Client(String p_sName, String p_sPassword) {
-        myCart=new Cart();
+    public Client(String p_sName, String p_sPassword, Market myMarket) {
+        myCart=new Cart(myMarket);
         setName(p_sName);
         setPassword(p_sPassword);
     }

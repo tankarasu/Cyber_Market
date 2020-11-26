@@ -1,5 +1,6 @@
 package com.company.views;
 
+import com.company.store.Market;
 import com.company.user.Client;
 import com.company.user.ClientDatabase;
 import com.company.user.User;
@@ -66,9 +67,9 @@ public class Auth {
     }
 
     public static void createAccount(ClientDatabase clientDatabase,
-                                     String name, String password) {
+                                     String name, String password, Market myMarket) {
 
-        Client newClient = new Client(name, password);
+        Client newClient = new Client(name, password, myMarket);
         clientDatabase.getM_aUserList().add(newClient);
     }
 

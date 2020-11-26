@@ -1,5 +1,7 @@
 package com.company.views;
 
+import com.company.store.Market;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,18 +13,18 @@ public class AdminInterface_Page extends JFrame {
 
     }
 
-    public static void ShowGUI() {
+    public static void ShowGUI(Market myMarket) {
         JFrame frame = new JFrame("Admin Interface");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame);
+        addComponentsToFrame(frame, myMarket);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel){
+    public static void addComponentsToFrame(Container panel, Market myMarket){
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -68,7 +70,7 @@ public class AdminInterface_Page extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                AdminProductList_Page.ShowGUI();
+                AdminProductList_Page.ShowGUI(myMarket);
             }
         });
 
@@ -76,7 +78,7 @@ public class AdminInterface_Page extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                AddProduct_Page.ShowGUI();
+                AddProduct_Page.ShowGUI(myMarket);
             }
         });
 

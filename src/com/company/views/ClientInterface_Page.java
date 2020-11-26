@@ -1,8 +1,8 @@
 package com.company.views;
 
+import com.company.store.Market;
 import com.company.store.ProductList_Page;
 import com.company.user.Cart_Page;
-import com.company.user.ClientDatabase;
 import com.company.user.User;
 
 import javax.swing.*;
@@ -26,20 +26,20 @@ public class ClientInterface_Page extends JFrame {
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
-    public static void ShowGUI(User client) {
+    public static void ShowGUI(User client, Market myMarket) {
         JFrame frame = new JFrame("Client Interface");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame,client);
+        addComponentsToFrame(frame,client, myMarket);
 
         frame.setVisible(true);
 
     }
 
     private static void addComponentsToFrame(Container panel,
-                                             User client) {
+                                             User client, Market myMarket) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -86,14 +86,14 @@ public class ClientInterface_Page extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                ProductList_Page.ShowGUI(client);
+                ProductList_Page.ShowGUI(client, myMarket);
             }
         });
         myCartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                Cart_Page.ShowGUI(client);
+                Cart_Page.ShowGUI(client, myMarket);
             }
         });
 

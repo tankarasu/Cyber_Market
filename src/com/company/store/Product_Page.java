@@ -15,21 +15,21 @@ public class Product_Page extends JFrame {
     }
 
     public static void ShowGUI(Product product,
-                               User client) {
+                               User client, Market myMarket) {
         JFrame frame = new JFrame(product.getName());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame, product, client);
+        addComponentsToFrame(frame, product, client, myMarket);
 
         frame.setVisible(true);
     }
 
     public static void addComponentsToFrame(Container panel,
                                             Product product,
-                                            User client
-    ) {
+                                            User client,
+                                            Market myMarket) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -79,7 +79,7 @@ public class Product_Page extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                ProductList_Page.ShowGUI(client);
+                ProductList_Page.ShowGUI(client, myMarket);
             }
         });
 

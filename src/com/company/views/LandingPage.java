@@ -1,5 +1,7 @@
 package com.company.views;
 
+import com.company.store.Market;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,6 +11,7 @@ public class LandingPage extends JFrame {
     // variables membres
     // -------------------------------------------------
     public static String role = "";
+
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -23,17 +26,19 @@ public class LandingPage extends JFrame {
 
 
     public static void ShowGUI() {
+        Market myMarket = new Market();
+
         JFrame frame = new JFrame("Landing Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame);
+        addComponentsToFrame(frame,myMarket);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel) {
+    public static void addComponentsToFrame(Container panel,Market myMarket) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -91,19 +96,19 @@ public class LandingPage extends JFrame {
         clientLogButton.addActionListener(e -> {
             role = "client";
             panel.setVisible(false);
-            AuthenticationPage.ShowGUI(role);
+            AuthenticationPage.ShowGUI(role, myMarket);
         });
 
         adminLogButton.addActionListener(e -> {
             role = "admin";
             panel.setVisible(false);
-            AuthenticationPage.ShowGUI(role);
+            AuthenticationPage.ShowGUI(role, myMarket);
         });
 
         createAccountButton.addActionListener(e -> {
             role = "Create";
             panel.setVisible(false);
-            AuthenticationPage.ShowGUI(role);
+            AuthenticationPage.ShowGUI(role, myMarket);
         });
 
         exitButton.addActionListener(e -> System.exit(0));

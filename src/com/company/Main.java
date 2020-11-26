@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.store.Market;
 import com.company.views.LandingPage;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ public class Main {
             @Override
             public void run() {
                 LandingPage.ShowGUI();
+
 
             }
         });

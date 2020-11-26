@@ -1,33 +1,32 @@
 package com.company.store;
 
-import com.company.user.ClientDatabase;
 import com.company.user.User;
 import com.company.views.ClientInterface_Page;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class ProductList_Page extends JFrame {
+
 
     public ProductList_Page() {
 
     }
 
-    public static void ShowGUI(User client) {
+    public static void ShowGUI(User client, Market myMarket) {
         JFrame frame = new JFrame("Product list");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame, client);
+        addComponentsToFrame(frame, client, myMarket);
 
         frame.setVisible(true);
     }
 
     public static void addComponentsToFrame(Container panel,
-                                            User client) {
+                                            User client, Market myMarket) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -58,11 +57,10 @@ public class ProductList_Page extends JFrame {
         panel.add(returnButton, gbc);
 
         //Creating product Buttons
-        Market productListMarket = new Market();
-        ArrayList<Product> store = productListMarket.getTheStore();
+
         int index = 2;
-        for (Product product : store) {
-            int productIndex = productListMarket.getTheStore().indexOf(product);
+        for (Product product : myMarket.getTheStore()) {
+            int productIndex = myMarket.getTheStore().indexOf(product);
             index++;
 
             JButton productButton = new JButton(product.getName());
@@ -75,7 +73,7 @@ public class ProductList_Page extends JFrame {
                 String numberRegex = "^[ ]?[0-9]\\d*[ ]?$";
                 String productQuantity;
 
-                productQuantity = (String) JOptionPane.showInputDialog(null,
+                productQuantity = JOptionPane.showInputDialog(null,
                         "How many product to add ?\n",
                         "Add to cart", JOptionPane.PLAIN_MESSAGE);
 
@@ -103,13 +101,13 @@ public class ProductList_Page extends JFrame {
                 client.getMyCart().addProductToCart(product, Integer.parseInt(productQuantity));
 
                 // retrait du stock
-                productListMarket.getTheStore().get(productIndex).setQuantity(product.getQuantity() - Integer.parseInt(productQuantity));
+                myMarket.getTheStore().get(productIndex).setQuantity(product.getQuantity() - Integer.parseInt(productQuantity));
 
             });
         }
         returnButton.addActionListener(e -> {
             panel.setVisible(false);
-            ClientInterface_Page.ShowGUI(client);
+            ClientInterface_Page.ShowGUI(client, myMarket);
         });
     }
 }

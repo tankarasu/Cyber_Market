@@ -1,5 +1,6 @@
 package com.company.user;
 
+import com.company.store.Market;
 import com.company.store.Product;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Cart {
     // constructor
     // -------------------------------------------------
 
-    public Cart() {
+    public Cart(Market myMarket) {
         m_aCart = new ArrayList<>();
     }
 
