@@ -1,5 +1,7 @@
 package com.company.store;
 
+import com.company.user.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,18 +14,22 @@ public class Product_Page extends JFrame {
         this.product = product;
     }
 
-    public static void ShowGUI(Product product) {
+    public static void ShowGUI(Product product,
+                               User client) {
         JFrame frame = new JFrame(product.getName());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame, product);
+        addComponentsToFrame(frame, product, client);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel, Product product) {
+    public static void addComponentsToFrame(Container panel,
+                                            Product product,
+                                            User client
+    ) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -67,12 +73,13 @@ public class Product_Page extends JFrame {
         gbc.gridy = 5;
 
         panel.add(returnButton, gbc);
+        // todo Joption pane pour les logout confirmation
 
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panel.setVisible(false);
-                ProductList_Page.ShowGUI();
+                ProductList_Page.ShowGUI(client);
             }
         });
 

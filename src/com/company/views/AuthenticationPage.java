@@ -5,8 +5,6 @@ import com.company.user.ClientDatabase;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class AuthenticationPage extends JFrame {
     // -------------------------------------------------
@@ -32,12 +30,14 @@ public class AuthenticationPage extends JFrame {
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame, role);
+        addComponentsToFrame(frame, role, clientDatabase);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel, String role) {
+    public static void addComponentsToFrame(Container panel,
+                                            String role,
+                                            ClientDatabase client) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -82,54 +82,48 @@ public class AuthenticationPage extends JFrame {
         panel.add(returnButton, gbc);
 
         // Event listeners
-        submit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int index = 0;
-                // client log in
-                if (role.equals("client")) {
-                    index = Auth.isUserRegistered(
-                            clientDatabase,
-                            nameField.getText(),
-                            passwordField.getText());
-                    if (index == -1) {
-                        AuthenticationPage.ShowGUI("client");
-                    } else {
-                        panel.setVisible(false);
-                        ClientInterface_Page.ShowGUI();
-                    }
-                    // Admin log in
-                } else if (role.equals("admin")) {
-                    index = Auth.isUserRegistered(
-                            adminDatabase,
-                            nameField.getText(),
-                            passwordField.getText());
-                    if (index == -1) {
-                        AuthenticationPage.ShowGUI("client");
-                    } else {
-                        panel.setVisible(false);
-                        AdminInterface_Page.ShowGUI();
-                    }
+        submit.addActionListener(e -> {
+            int index;
+            // client log in
+            if (role.equals("client")) {
+                index = Auth.isUserRegistered(
+                        clientDatabase,
+                        nameField.getText(),
+                        passwordField.getText());
+                if (index == -1) {
+                    AuthenticationPage.ShowGUI("client");
                 } else {
-                    // create an account
-                    Auth.createAccount(
-                            clientDatabase,
-                            nameField.getText(),
-                            passwordField.getText());
-                    nameField.setText("");
-                    passwordField.setText("");
+                    panel.setVisible(false);
+                    ClientInterface_Page.ShowGUI(client.getM_aUserList().get(index));
                 }
-                // todo Errors Handling
-
+                // Admin log in
+            } else if (role.equals("admin")) {
+                index = Auth.isUserRegistered(
+                        adminDatabase,
+                        nameField.getText(),
+                        passwordField.getText());
+                if (index == -1) {
+                    AuthenticationPage.ShowGUI("client");
+                } else {
+                    panel.setVisible(false);
+                    AdminInterface_Page.ShowGUI();
+                }
+            } else {
+                // create an account
+                Auth.createAccount(
+                        clientDatabase,
+                        nameField.getText(),
+                        passwordField.getText());
+                nameField.setText("");
+                passwordField.setText("");
             }
+            // todo Errors Handling
+
         });
 
-        returnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                LandingPage.ShowGUI();
-            }
+        returnButton.addActionListener(e -> {
+            panel.setVisible(false);
+            LandingPage.ShowGUI();
         });
     }
 

@@ -61,8 +61,6 @@ public class Cart {
             case "1":
                 // todo sales history
                 Order order = new Order(client.getName(), m_aCart);
-                //OrderList.orderArrayList.add(order);
-                //OrderList.displayOrders();
 
                 //todo fix Orderlist later
 

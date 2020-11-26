@@ -1,11 +1,11 @@
 package com.company.store;
 
+import com.company.user.ClientDatabase;
+import com.company.user.User;
 import com.company.views.ClientInterface_Page;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ProductList_Page extends JFrame {
@@ -14,18 +14,19 @@ public class ProductList_Page extends JFrame {
 
     }
 
-    public static void ShowGUI() {
+    public static void ShowGUI(User client) {
         JFrame frame = new JFrame("Product list");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame);
+        addComponentsToFrame(frame, client);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel) {
+    public static void addComponentsToFrame(Container panel,
+                                            User client) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -52,25 +53,33 @@ public class ProductList_Page extends JFrame {
         int index = 1;
         for (Product product : store) {
             index++;
+            // initialise quantity array to display in JOptionPane
+            String[] displayQuantity = new String[product.getQuantity()];
+            for (int i = 0; i < product.getQuantity(); i++) {
+                displayQuantity[i] = String.valueOf(i + 1);
+            }
+
             JButton productButton = new JButton(product.getName());
             gbc.gridx = 0;
             gbc.gridy = index;
             panel.add(productButton, gbc);
 
-            productButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    panel.setVisible(false);
-                    Product_Page.ShowGUI(product);
-                }
+            // selection of a Product
+            productButton.addActionListener(e -> {
+                String productQuantity =
+                        (String) JOptionPane.showInputDialog(null,
+                                "How many product to add ?\n" + product.getQuantity() + " pieces available",
+                                "Add to cart", JOptionPane.PLAIN_MESSAGE);
+
+                // ajout au cart
+                client.getMyCart().addProductToCart(product, Integer.parseInt(productQuantity));
+                product.setQuantity(product.getQuantity() - Integer.parseInt(productQuantity));
+
             });
         }
-        returnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                ClientInterface_Page.ShowGUI();
-            }
+        returnButton.addActionListener(e -> {
+            panel.setVisible(false);
+            ClientInterface_Page.ShowGUI(client);
         });
     }
 }

@@ -2,8 +2,6 @@ package com.company.views;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LandingPage extends JFrame {
 
@@ -41,7 +39,7 @@ public class LandingPage extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         // title label
-        JLabel titleLabel = new JLabel("Welcome to the Cyber Marketan dear User");
+        JLabel titleLabel = new JLabel("Welcome to the Cyber Market dear User");
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridx = 0;
@@ -90,39 +88,25 @@ public class LandingPage extends JFrame {
 
         // Events Listeners on button
 
-        clientLogButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                role = "client";
-                panel.setVisible(false);
-                AuthenticationPage.ShowGUI(role);
-            }
+        clientLogButton.addActionListener(e -> {
+            role = "client";
+            panel.setVisible(false);
+            AuthenticationPage.ShowGUI(role);
         });
 
-        adminLogButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                role = "admin";
-                panel.setVisible(false);
-                AuthenticationPage.ShowGUI(role);
-            }
+        adminLogButton.addActionListener(e -> {
+            role = "admin";
+            panel.setVisible(false);
+            AuthenticationPage.ShowGUI(role);
         });
 
-        createAccountButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                role = "Create";
-                panel.setVisible(false);
-                AuthenticationPage.ShowGUI(role);
-            }
+        createAccountButton.addActionListener(e -> {
+            role = "Create";
+            panel.setVisible(false);
+            AuthenticationPage.ShowGUI(role);
         });
 
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        exitButton.addActionListener(e -> System.exit(0));
     }
     // -------------------------------------------------
     // getters

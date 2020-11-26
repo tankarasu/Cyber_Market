@@ -23,18 +23,19 @@ public class Cart_Page extends JFrame {
     // méthodes
     // -------------------------------------------------
 
-    public static void ShowGUI() {
+    public static void ShowGUI(User client) {
         JFrame frame = new JFrame("My Cart");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame);
+        addComponentsToFrame(frame,client);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel) {
+    public static void addComponentsToFrame(Container panel,
+                                            User client) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -68,13 +69,12 @@ public class Cart_Page extends JFrame {
 
         // modal confirm pay + total to pay
         // todo  JOptionPane confirmPay = new JOptionPane();
+        // todo case cart empty
 
-        returnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                ClientInterface_Page.ShowGUI();
-            }
+
+        returnButton.addActionListener(e -> {
+            panel.setVisible(false);
+            ClientInterface_Page.ShowGUI(client);
         });
     }
     // -------------------------------------------------
