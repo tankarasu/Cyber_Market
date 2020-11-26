@@ -32,12 +32,10 @@ public class AuthenticationPage extends JFrame {
 
         userDatabase = (UserDatabase)Main.isDeSerialized("UserDatabase");
         if(userDatabase==null){
-            System.out.println("restored userDatabase EMPTY");
             userDatabase = new UserDatabase();
         }
         clientDatabase = (ClientDatabase) Main.isDeSerialized("ClientDatabase");
         if(clientDatabase==null){
-            System.out.println("restored clientDatabase EMPTY");
             clientDatabase = new ClientDatabase();
         }
 

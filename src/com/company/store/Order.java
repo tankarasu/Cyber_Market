@@ -1,42 +1,42 @@
 package com.company.store;
 
-import com.company.Main;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Market implements Serializable {
+public class Order {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-
-    ArrayList<Product> m_aStore = new ArrayList<>();
+    private final String clientName;
+    private final ArrayList<Product> clientCartContent;
 
     // -------------------------------------------------
-    // constructor
+    //constructor
     // -------------------------------------------------
 
-
-    public Market() {
+    public Order(String name, ArrayList<Product> cart) {
+        clientName = name;
+        clientCartContent = cart;
     }
 
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
 
-    public void addProduct(String p_sProductName, double p_dProductPrice, int p_iQuantity) {
-            getTheStore().add(new Product(p_sProductName, p_iQuantity, p_dProductPrice));
-            System.out.println("Product added");
-    }
-
     // -------------------------------------------------
     // getters
     // -------------------------------------------------
 
-    //Regular getter to get the ArrayList
-    public ArrayList<Product> getTheStore() {
-        return m_aStore;
+    public String getClientName() {
+        return clientName;
     }
+
+    public ArrayList<Product> getClientCartContent() {
+        return clientCartContent;
+    }
+
+    // -------------------------------------------------
+    // setters
+    // -------------------------------------------------
 
 
 }

@@ -108,6 +108,8 @@ public class AddProduct_Page extends JFrame {
             if (name.equals("") | quantity.equals("") | price.equals("") | quantity.equals("0") | price.equals("0") | !quantity.matches(regexNumber) | !price.matches(regexNumber)) {
                 textPane.setText(" You must provide all fields with valid " +
                         "value");
+                return;
+            }else{
                 myMarket.addProduct(name,Double.parseDouble(quantity),Integer.parseInt(price));
                 Main.serialize(myMarket);
             }
