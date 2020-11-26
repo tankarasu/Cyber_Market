@@ -7,13 +7,8 @@ import com.company.user.User;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ClientInterface_Page extends JFrame {
-    // -------------------------------------------------
-    // variables membres
-    // -------------------------------------------------
 
     // -------------------------------------------------
     //constructor
@@ -45,7 +40,7 @@ public class ClientInterface_Page extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         //Title Label
-        JLabel titleLabel = new JLabel("Welcome" +/*clientname*/" Please make a choice");
+        JLabel titleLabel = new JLabel("Welcome, Please make a choice");
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridx = 0;
@@ -74,38 +69,20 @@ public class ClientInterface_Page extends JFrame {
 
         panel.add(logOutButton, gbc);
 
-        logOutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                LandingPage.ShowGUI();
-            }
+        logOutButton.addActionListener(e -> {
+            panel.setVisible(false);
+            LandingPage.ShowGUI();
         });
 
-        productListButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                ProductList_Page.ShowGUI(client, myMarket);
-            }
+        productListButton.addActionListener(e -> {
+            panel.setVisible(false);
+            ProductList_Page.ShowGUI(client, myMarket);
         });
-        myCartButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                Cart_Page.ShowGUI(client, myMarket);
-            }
+        myCartButton.addActionListener(e -> {
+            panel.setVisible(false);
+            Cart_Page.ShowGUI(client, myMarket);
         });
-
 
     }
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }

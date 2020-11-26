@@ -5,12 +5,8 @@ import com.company.store.Product;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class AdminProductList_Page extends JFrame {
-    // -------------------------------------------------
-    // variables membres
-    // -------------------------------------------------
 
     // -------------------------------------------------
     //constructor
@@ -81,15 +77,6 @@ public class AdminProductList_Page extends JFrame {
             AdminInterface_Page.ShowGUI(myMarket);
         });
 
-        // todo modal product successfully added
     }
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }

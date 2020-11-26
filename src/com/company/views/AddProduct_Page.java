@@ -9,10 +9,6 @@ import java.util.regex.Pattern;
 public class AddProduct_Page extends JFrame {
 
     // -------------------------------------------------
-    // variables membres
-    // -------------------------------------------------
-
-    // -------------------------------------------------
     //constructor
     // -------------------------------------------------
 
@@ -51,39 +47,56 @@ public class AddProduct_Page extends JFrame {
         // label name
         JLabel nameLabel = new JLabel("Name:");
         gbc.gridy = 1;
+
         panel.add(nameLabel, gbc);
+
         // textField name
         JTextField nameField = new JTextField(15);
         gbc.gridy = 2;
+
         panel.add(nameField, gbc);
+
         // quantity
         JLabel quantityLabel = new JLabel("Quantity:");
         gbc.gridy = 3;
+
         panel.add(quantityLabel, gbc);
+
         // textField quantity
         JTextField quantityField = new JTextField(15);
         gbc.gridy = 4;
+
         panel.add(quantityField, gbc);
+
         // Price
         JLabel priceLabel = new JLabel("Price:");
         gbc.gridy = 5;
+
         panel.add(priceLabel, gbc);
+
         // textField price
         JTextField priceField = new JTextField(15);
         gbc.gridy = 6;
+
         panel.add(priceField, gbc);
+
         // confirm
         JButton submitButton = new JButton("Add");
         gbc.gridy = 7;
+
         panel.add(submitButton, gbc);
+
         // return
         JButton cancelButton = new JButton("Return");
         gbc.gridy = 8;
+
         panel.add(cancelButton, gbc);
+
         // info field
         JTextPane textPane = new JTextPane();
         textPane.setText("");
         gbc.gridy = 9;
+
         panel.add(textPane);
 
         submitButton.addActionListener(e -> {
@@ -97,7 +110,6 @@ public class AddProduct_Page extends JFrame {
                     | Pattern.matches(regexNumber, price)) {
                 textPane.setText(" You must provide all fields with valid " +
                         "value");
-                return;
             }
 
         });
@@ -107,13 +119,5 @@ public class AddProduct_Page extends JFrame {
             AdminInterface_Page.ShowGUI(myMarket);
         });
     }
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }

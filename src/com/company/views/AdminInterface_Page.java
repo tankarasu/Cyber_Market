@@ -4,8 +4,6 @@ import com.company.store.Market;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class AdminInterface_Page extends JFrame {
 
@@ -66,28 +64,19 @@ public class AdminInterface_Page extends JFrame {
 
         panel.add(logOutButton, gbc);
 
-        productListButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                AdminProductList_Page.ShowGUI(myMarket);
-            }
+        productListButton.addActionListener(e -> {
+            panel.setVisible(false);
+            AdminProductList_Page.ShowGUI(myMarket);
         });
 
-        addProductButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                AddProduct_Page.ShowGUI(myMarket);
-            }
+        addProductButton.addActionListener(e -> {
+            panel.setVisible(false);
+            AddProduct_Page.ShowGUI(myMarket);
         });
 
-        logOutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel.setVisible(false);
-                LandingPage.ShowGUI();
-            }
+        logOutButton.addActionListener(e -> {
+            panel.setVisible(false);
+            LandingPage.ShowGUI();
         });
     }
 }

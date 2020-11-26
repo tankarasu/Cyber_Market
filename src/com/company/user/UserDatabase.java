@@ -6,7 +6,7 @@ public class UserDatabase {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    private static ArrayList<User> m_aUserList = new ArrayList<>();
+    private static final ArrayList<User> UserList = new ArrayList<>();
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -15,22 +15,11 @@ public class UserDatabase {
     }
 
     // -------------------------------------------------
-    // méthodes
-    // -------------------------------------------------
-
-    // -------------------------------------------------
     // getters
     // -------------------------------------------------
 
     public  ArrayList<User> getM_aUserList() {
-        return m_aUserList;
+        return UserList;
     }
 
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
-    public void setM_aUserList(ArrayList<User> m_aUserList) {
-        this.m_aUserList = m_aUserList;
-    }
 }

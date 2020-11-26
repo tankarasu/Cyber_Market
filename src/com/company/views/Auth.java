@@ -1,15 +1,11 @@
 package com.company.views;
 
-import com.company.store.Market;
 import com.company.user.Client;
 import com.company.user.ClientDatabase;
 import com.company.user.User;
 import com.company.user.UserDatabase;
 
 public class Auth {
-    // -------------------------------------------------
-    // variables membres
-    // -------------------------------------------------
 
     // -------------------------------------------------
     //constructor
@@ -24,12 +20,12 @@ public class Auth {
     // -------------------------------------------------
 
     public static int isUserRegistered(
-            UserDatabase userDatabase,String name,String password) {
+            UserDatabase userDatabase, String name, String password) {
 
         int index = 0;
 
         // checking the name
-        boolean dbName = false; // false nom non présent dans la db
+        boolean dbName = false;
         for (User user : userDatabase.getM_aUserList()) {
             if (user.getName().equals(name)) {
                 dbName = true;
@@ -37,49 +33,32 @@ public class Auth {
             }
         }
         // does the name in the DB exist
-        if (!dbName) {
-            System.out.println("This userName doesn't exist!");// todo faire
-            // une modal
-            return -1;
-        }
+        if (!dbName) return -1;
+
         // checking the password
 
-        boolean isRegistred = false;
+        boolean isRegistered = false;
         for (User user : userDatabase.getM_aUserList()) {
             if ((user.getPassword().equals(password))
                     & (user.getName().equals(name))) {
                 index = userDatabase.getM_aUserList().indexOf(user);
-                isRegistred = true;
+                isRegistered = true;
                 break;
             }
         }
 
         // user validation
-        if (isRegistred) {
-            System.out.println("\nLogged IN\n");// todo l'afficher dans la
-            // target window
-            return index;
-        } else {
-            System.out.println("Your Password is incorrect"); //todo afficher
-            // en modal
-        }
+        if (isRegistered) return index;
+
         return -1;
     }
 
     public static void createAccount(ClientDatabase clientDatabase,
-                                     String name, String password, Market myMarket) {
+                                     String name,
+                                     String password) {
 
-        Client newClient = new Client(name, password, myMarket);
+        Client newClient = new Client(name, password);
         clientDatabase.getM_aUserList().add(newClient);
     }
 
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
-// todo nettoyage en fin de tous les commentaires
 }

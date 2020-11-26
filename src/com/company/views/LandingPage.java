@@ -33,12 +33,12 @@ public class LandingPage extends JFrame {
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame,myMarket);
+        addComponentsToFrame(frame, myMarket);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel,Market myMarket) {
+    public static void addComponentsToFrame(Container panel, Market myMarket) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -55,9 +55,6 @@ public class LandingPage extends JFrame {
         // Log Client
         // spacing after the text in button adjust the size of the button
         JButton clientLogButton = new JButton("Log in as Client     ");
-        gbc.weightx = 0.5;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.gridx = 0;
         gbc.gridy = 2;
 
         panel.add(clientLogButton, gbc);
@@ -65,18 +62,12 @@ public class LandingPage extends JFrame {
         // Log Admin
         // spacing after the text in button adjust the size of the button
         JButton adminLogButton = new JButton("Log in as Admin    ");
-        gbc.weightx = 0.5;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.gridx = 0;
         gbc.gridy = 3;
 
         panel.add(adminLogButton, gbc);
 
         // Create Account
         JButton createAccountButton = new JButton("Create an Account");
-        gbc.weightx = 0.5;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.gridx = 0;
         gbc.gridy = 4;
 
         panel.add(createAccountButton, gbc);
@@ -84,9 +75,6 @@ public class LandingPage extends JFrame {
         // Exit
         // spacing after the text in button adjust the size of the button
         JButton exitButton = new JButton("Exit program         ");
-        gbc.weightx = 0.5;
-        gbc.fill = GridBagConstraints.NONE;
-        gbc.gridx = 0;
         gbc.gridy = 5;
 
         panel.add(exitButton, gbc);
@@ -113,13 +101,5 @@ public class LandingPage extends JFrame {
 
         exitButton.addActionListener(e -> System.exit(0));
     }
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }

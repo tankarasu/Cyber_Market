@@ -9,9 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AuthenticationPage extends JFrame {
-    // -------------------------------------------------
-    // variables membres
-    // -------------------------------------------------
+
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -26,21 +24,29 @@ public class AuthenticationPage extends JFrame {
 
 
     public static void ShowGUI(String role, Market myMarket) {
-     ClientDatabase clientDatabase = new ClientDatabase(myMarket);
+     ClientDatabase clientDatabase = new ClientDatabase();
      AdminDatabase adminDatabase = new AdminDatabase();
         JFrame frame = new JFrame("Authentication Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame, role, clientDatabase, myMarket, clientDatabase, adminDatabase);
+        addComponentsToFrame(frame,
+                role,
+                clientDatabase,
+                myMarket,
+                clientDatabase,
+                adminDatabase);
 
         frame.setVisible(true);
     }
 
     public static void addComponentsToFrame(Container panel,
                                             String role,
-                                            ClientDatabase client, Market myMarket, ClientDatabase clientDatabase, UserDatabase adminDatabase) {
+                                            ClientDatabase client,
+                                            Market myMarket,
+                                            ClientDatabase clientDatabase,
+                                            UserDatabase adminDatabase) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -97,7 +103,8 @@ public class AuthenticationPage extends JFrame {
                     AuthenticationPage.ShowGUI("client", myMarket);
                 } else {
                     panel.setVisible(false);
-                    ClientInterface_Page.ShowGUI(client.getM_aUserList().get(index), myMarket);
+                    ClientInterface_Page.ShowGUI(client.getM_aUserList().get(index),
+                            myMarket);
                 }
                 // Admin log in
             } else if (role.equals("admin")) {
@@ -116,11 +123,10 @@ public class AuthenticationPage extends JFrame {
                 Auth.createAccount(
                         clientDatabase,
                         nameField.getText(),
-                        passwordField.getText(), myMarket);
+                        passwordField.getText());
                 nameField.setText("");
                 passwordField.setText("");
             }
-            // todo Errors Handling
 
         });
 
@@ -129,14 +135,5 @@ public class AuthenticationPage extends JFrame {
             LandingPage.ShowGUI();
         });
     }
-
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }

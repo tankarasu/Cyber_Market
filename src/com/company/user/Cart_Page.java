@@ -9,9 +9,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Cart_Page extends JFrame {
-    // -------------------------------------------------
-    // variables membres
-    // -------------------------------------------------
 
     // -------------------------------------------------
     //constructor
@@ -82,18 +79,12 @@ public class Cart_Page extends JFrame {
         gbc.gridy = 4;
 
         panel.add(textPane, gbc);
-        // todo sales history
-        // todo fix Orderlist later
 
         // Return button
         JButton returnButton = new JButton("Return");
         gbc.gridy = 5;
 
         panel.add(returnButton, gbc);
-
-        // modal confirm pay + total to pay
-        // todo  JOptionPane confirmPay = new JOptionPane();
-        // todo case cart empty
 
         // Event listeners
         // buy ALl products
@@ -104,25 +95,19 @@ public class Cart_Page extends JFrame {
                 }
         );
 
+        // remove product
         removeAllButton.addActionListener(e -> {
                     clientCart.clear();
-                    textPane.setText("Your cart has been reseted and the " +
+                    textPane.setText("Your cart has been reset and the " +
                             "products go back to the store");
                 }
         );
 
+        // return
         returnButton.addActionListener(e -> {
             panel.setVisible(false);
             ClientInterface_Page.ShowGUI(client, myMarket);
         });
     }
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }
