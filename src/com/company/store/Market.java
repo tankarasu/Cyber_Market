@@ -1,10 +1,12 @@
 package com.company.store;
 
+import com.company.Main;
+
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Market {
+public class Market implements Serializable {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
@@ -12,7 +14,6 @@ public class Market {
     ArrayList<Product> m_aStore = new ArrayList<>();
     Product baguette = new Product("baguette", 42, 2.0);
     Product pain = new Product("pain", 42, 1.0);
-    Scanner userInput = new Scanner(System.in);
 
 
     // -------------------------------------------------
@@ -23,35 +24,36 @@ public class Market {
     public Market() {
         m_aStore.add(baguette);
         m_aStore.add(pain);
-        System.out.println(m_aStore);
+
     }
 
     // -------------------------------------------------
     // méthodes
     // -------------------------------------------------
 
-    public void addProductMenu() {
+    public void addProductMenu(Market myMarket) {
         String regex = "^[ ]?[0-9]+[ ]?$";
         // todo inclure String.trim()
         String choice;
 
         System.out.println("Enter product name");
-        String productName = userInput.next();
+        String productName = Main.getInput();
 
         do {
             System.out.println("Enter product price");
-            choice = userInput.next();
+            choice = Main.getInput();
         } while (!Pattern.matches(regex, choice));
         double productPrice = Double.parseDouble(choice);
         // todo plus tard, changer regex pour prise en compte de nombres à virgule
 
         do {
             System.out.println("Enter product quantity");
-            choice = userInput.next();
+            choice = Main.getInput();
         } while (!Pattern.matches(regex, choice));
         int productQuantity = Integer.parseInt(choice);
 
         addProduct(productName, productPrice, productQuantity);
+        Main.serialize(myMarket);
     }
 
     public void addProduct(String p_sProductName, double p_dProductPrice, int p_iQuantity) {

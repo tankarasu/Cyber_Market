@@ -1,18 +1,19 @@
-package com.company.user;
+package com.company.views;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.*;
 
-public class UserDatabase implements Serializable {
+public class ListOrder_Page extends JFrame {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    private ArrayList<User> m_aUserList = new ArrayList<>();
+
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
 
-    public UserDatabase() {
+    public ListOrder_Page() throws HeadlessException {
+
     }
 
     // -------------------------------------------------
@@ -23,15 +24,9 @@ public class UserDatabase implements Serializable {
     // getters
     // -------------------------------------------------
 
-    public ArrayList<User> getM_aUserList() {
-        return m_aUserList;
-    }
-
     // -------------------------------------------------
     // setters
     // -------------------------------------------------
 
-    public void setM_aUserList(ArrayList<User> m_aUserList) {
-        this.m_aUserList = m_aUserList;
-    }
+
 }

@@ -1,18 +1,21 @@
 package com.company.user;
 
+import com.company.Main;
 import com.company.store.Market;
+import com.company.store.Order;
+import com.company.store.OrderList;
 import com.company.store.Product;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Cart {
+public class Cart implements Serializable {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
     public ArrayList<Product> m_aCart;
-    public Scanner userInput = new Scanner(System.in);
 
     // -------------------------------------------------
     // constructor
@@ -26,7 +29,7 @@ public class Cart {
     // méthodes
     // -------------------------------------------------
 
-    public void getCart(Market myMarket) {
+    public void getCart(Market myMarket, User client) {
         // todo case panier vide
 
         System.out.println("Panier");
@@ -50,13 +53,21 @@ public class Cart {
 
         do {
             System.out.println(cartMenu);
-            choice = userInput.next();
+            choice = Main.getInput();
         } while (!Pattern.matches("^[ ]?[123][ ]?$", choice));
 
         // choix de l'action sur le cart du client
         switch (choice) {
             case "1":
                 // todo sales history
+                Order order = new Order(client.getName(), m_aCart);
+                //OrderList.orderArrayList.add(order);
+                //OrderList.displayOrders();
+
+                //todo fix Orderlist later
+
+
+                //myMarket.orderList.displayOrders();
                 m_aCart.clear();
                 System.out.println("Your cart has been processed, you will " +
                         "receive your articles soon");

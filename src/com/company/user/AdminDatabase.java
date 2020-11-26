@@ -14,9 +14,8 @@ public class AdminDatabase extends UserDatabase {
     // -------------------------------------------------
 
     public AdminDatabase() {
-        Admin admin = new Admin();
-        admin.setPassword("Root");
-        admin.setName("Admin");
+    }
+    public AdminDatabase(Admin admin) {
         getM_aUserList().add(admin);
     }
 

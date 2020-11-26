@@ -1,18 +1,21 @@
-package com.company.user;
+package com.company.store;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class UserDatabase implements Serializable {
+public class Order {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    private ArrayList<User> m_aUserList = new ArrayList<>();
+    private final String clientName;
+    private final ArrayList<Product> clientCartContent;
+
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
 
-    public UserDatabase() {
+    public Order(String name, ArrayList<Product> cart) {
+        clientName = name;
+        clientCartContent = cart;
     }
 
     // -------------------------------------------------
@@ -23,15 +26,17 @@ public class UserDatabase implements Serializable {
     // getters
     // -------------------------------------------------
 
-    public ArrayList<User> getM_aUserList() {
-        return m_aUserList;
+    public String getClientName() {
+        return clientName;
+    }
+
+    public ArrayList<Product> getClientCartContent() {
+        return clientCartContent;
     }
 
     // -------------------------------------------------
     // setters
     // -------------------------------------------------
 
-    public void setM_aUserList(ArrayList<User> m_aUserList) {
-        this.m_aUserList = m_aUserList;
-    }
+
 }

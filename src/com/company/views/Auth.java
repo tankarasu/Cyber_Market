@@ -1,20 +1,18 @@
 package com.company.views;
 
+import com.company.Main;
 import com.company.store.Market;
 import com.company.user.Client;
 import com.company.user.ClientDatabase;
 import com.company.user.User;
 import com.company.user.UserDatabase;
-
-import java.sql.SQLOutput;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Auth {
+public abstract class Auth {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
-    static Scanner userInput = new Scanner(System.in);
+
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -40,7 +38,7 @@ public class Auth {
         // todo verifier les scanner avec nextLine
         // checking the name
         System.out.println("What's your name Sir?");
-        name = userInput.next();
+        name = Main.getInput();
 
         boolean dbName = false; // false nom non présent dans la db
 //        for (int i = 0; i < userDatabase.getM_aUserList().size(); i++) {
@@ -57,7 +55,7 @@ public class Auth {
         }
         // checking th password
         System.out.println("Please enter your Password");
-        password = userInput.next();
+        password = Main.getInput();
 
         boolean isRegistred = false;
         for (User user : userDatabase.getM_aUserList()) {
@@ -80,7 +78,7 @@ public class Auth {
         return -1;
     }
 
-    public static void createAccount(ClientDatabase clientDatabase) {
+    public static void createAccount(ClientDatabase clientDatabase, UserDatabase userDatabase) {
         String name;
         String password;
         String regexPassword =
@@ -91,18 +89,21 @@ public class Auth {
 
         do {
             System.out.println("Veuillez entrez votre nom:");
-            name = userInput.nextLine();
+            name = Main.getInput();
         } while (!Pattern.matches(regexName, name));
 
         do {
             System.out.println("Veuillez entrez un mot de passe");
-            password = userInput.nextLine();
+            password = Main.getInput();
         } while (!Pattern.matches(regexPassword, password));
 
         // todo confirmez mot de passe
         // todo donnez une description du mot de passe attendu
         Client newClient = new Client(name, password);
+        Main.serialize(newClient);
         clientDatabase.getM_aUserList().add(newClient);
+        Main.serialize(clientDatabase);
+        Main.serialize(userDatabase);
     }
 
     // -------------------------------------------------
