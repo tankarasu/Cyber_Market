@@ -36,13 +36,13 @@ public class Auth {
                 break;
             }
         }
-        // is the name in the DB exist
+        // does the name in the DB exist
         if (!dbName) {
             System.out.println("This userName doesn't exist!");// todo faire
             // une modal
             return -1;
         }
-        // checking th password
+        // checking the password
 
         boolean isRegistred = false;
         for (User user : userDatabase.getM_aUserList()) {
@@ -57,7 +57,7 @@ public class Auth {
         // user validation
         if (isRegistred) {
             System.out.println("\nLogged IN\n");// todo l'afficher dans la
-            // fenetre cible
+            // target window
             return index;
         } else {
             System.out.println("Your Password is incorrect"); //todo afficher

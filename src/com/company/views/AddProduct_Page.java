@@ -48,27 +48,27 @@ public class AddProduct_Page extends JFrame {
 
         panel.add(titleLabel, gbc);
 
-        // label nom
+        // label name
         JLabel nameLabel = new JLabel("Name:");
         gbc.gridy = 1;
         panel.add(nameLabel, gbc);
-        // textField nom
+        // textField name
         JTextField nameField = new JTextField(15);
         gbc.gridy = 2;
         panel.add(nameField, gbc);
-        // quantité
+        // quantity
         JLabel quantityLabel = new JLabel("Quantity:");
         gbc.gridy = 3;
         panel.add(quantityLabel, gbc);
-        // textField quantité
+        // textField quantity
         JTextField quantityField = new JTextField(15);
         gbc.gridy = 4;
         panel.add(quantityField, gbc);
-        // Prix
+        // Price
         JLabel priceLabel = new JLabel("Price:");
         gbc.gridy = 5;
         panel.add(priceLabel, gbc);
-        // textField prix
+        // textField price
         JTextField priceField = new JTextField(15);
         gbc.gridy = 6;
         panel.add(priceField, gbc);

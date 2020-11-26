@@ -54,7 +54,7 @@ public class AuthenticationPage extends JFrame {
 
         panel.add(nameLabel, gbc);
 
-        // textField Nom
+        // textField Name
         JTextField nameField = new JTextField(15);
         gbc.gridy = 2;
 

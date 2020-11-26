@@ -63,7 +63,7 @@ public class Cart_Page extends JFrame {
 
         panel.add(removeAllButton, gbc);
 
-        // affichage du Cart
+        // Display Cart
         JTextPane textPane = new JTextPane();
         String textPaneText = "Your Cart is Empty";
 

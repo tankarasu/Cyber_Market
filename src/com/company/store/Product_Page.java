@@ -34,7 +34,7 @@ public class Product_Page extends JFrame {
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
 
-        //jlabel title produit
+        //jlabel product title
         JLabel productTitle = new JLabel(product.getName());
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
@@ -43,26 +43,26 @@ public class Product_Page extends JFrame {
 
         panel.add(productTitle, gbc);
 
-        //jlabel produit unitaire concaténé
+        //jlabel unit price of a specific product
         JLabel price = new JLabel("Unit price : " + String.valueOf(product.getPrice()));
         gbc.gridy = 1;
 
         panel.add(price, gbc);
 
 
-        //jlabel quantité
+        //jlabel quantity
         JLabel quantity = new JLabel("Available quantity : " + String.valueOf(product.getQuantity()));
         gbc.gridy = 2;
 
         panel.add(quantity, gbc);
 
-        //jtextfield entrer qté
+        //jtextfield to enter quantity
         JTextField inputQuantity = new JTextField();
         gbc.gridy = 3;
 
         panel.add(inputQuantity);
 
-        // bouton add to Cart
+        //add to Cart button
         JButton addToCart = new JButton("Add to Cart");
         gbc.gridy = 4;
 
@@ -73,7 +73,7 @@ public class Product_Page extends JFrame {
         gbc.gridy = 5;
 
         panel.add(returnButton, gbc);
-        // todo Joption pane pour les logout confirmation
+        // todo Joption pane for logout confirmation
 
         returnButton.addActionListener(new ActionListener() {
             @Override

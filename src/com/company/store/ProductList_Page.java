@@ -96,11 +96,11 @@ public class ProductList_Page extends JFrame {
                     productQuantity = String.valueOf(product.getQuantity());
                 }
 
-                // ajout au cart
+                // add to cart
 
                 client.getMyCart().addProductToCart(product, Integer.parseInt(productQuantity));
 
-                // retrait du stock
+                // remove from stock
                 myMarket.getTheStore().get(productIndex).setQuantity(product.getQuantity() - Integer.parseInt(productQuantity));
 
             });

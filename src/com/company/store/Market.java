@@ -58,6 +58,7 @@ public class Market {
         System.out.println("Product added");
     }
 
+    //Displays the list of products
     public void getProductList() {
         for (Product product : m_aStore) {
             int index = m_aStore.indexOf(product);
@@ -66,6 +67,7 @@ public class Market {
         }
     }
 
+    //Displays only one product
     public void getSpecificProduct(int index) {
         StringBuilder result = new StringBuilder("");
         result.append(m_aStore.get(index).getName() + " - ")
@@ -79,6 +81,7 @@ public class Market {
     // getters
     // -------------------------------------------------
 
+    //Regular getter to get the ArrayList
     public ArrayList<Product> getTheStore() {
         return m_aStore;
     }
