@@ -9,9 +9,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Cart_Page extends JFrame {
-    // -------------------------------------------------
-    // variables membres
-    // -------------------------------------------------
 
     // -------------------------------------------------
     //constructor
@@ -80,33 +77,28 @@ public class Cart_Page extends JFrame {
         //JTextPane textPane = new JTextPane();
         //String textPaneText = "Your Cart is Empty";
 
+        int total=0;
         for (Product product : client.getMyCart().m_aCart) {
-
+            total+=(product.getQuantity() * product.getPrice());
             int index = client.getMyCart().m_aCart.indexOf(product);
             resultTextArea.append((index + 1) + " - " + product.getName()
                     + " Quantity:" + product.getQuantity()
                     + " price: " + product.getPrice() + " €/unit\n");
-            resultTextArea.append("total: " + (product.getQuantity() * product.getPrice())
-                    + " €\n");
+        }resultTextArea.append("Total bill value: "+total+"€");
 
-        }
         //textPane.setText(textPaneText);
         //textPane.setEnabled(false);
         //gbc.gridy = 4;
 
+
         //panel.add(textPane, gbc);
-        // todo sales history
-        // todo fix Orderlist later
+
 
         // Return button
         JButton returnButton = new JButton("Return");
         gbc.gridy = 6;
         gbc.weightx = 0.5;
         panel.add(returnButton, gbc);
-
-        // modal confirm pay + total to pay
-        // todo  JOptionPane confirmPay = new JOptionPane();
-        // todo case cart empty
 
         // Event listeners
         // buy ALl products
@@ -117,6 +109,7 @@ public class Cart_Page extends JFrame {
             }
         );
 
+        // remove product
         removeAllButton.addActionListener(e -> {
             client.getMyCart().m_aCart.clear();
                     resultTextArea.setText("Your cart has been reseted and the " +
@@ -125,18 +118,11 @@ public class Cart_Page extends JFrame {
             }
         );
 
+        // return
         returnButton.addActionListener(e -> {
             panel.setVisible(false);
             ClientInterface_Page.ShowGUI(client, myMarket);
         });
     }
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }

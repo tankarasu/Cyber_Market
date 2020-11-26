@@ -1,8 +1,5 @@
 package com.company.user;
 
-import com.company.store.Market;
-import com.company.store.Product;
-
 public class Client extends User {
     // -------------------------------------------------
     // variables membres
@@ -19,10 +16,6 @@ public class Client extends User {
         setName(p_sName);
         setPassword(p_sPassword);
     }
-
-    // -------------------------------------------------
-    // méthodes
-    // -------------------------------------------------
 
     // -------------------------------------------------
     // getters

@@ -1,6 +1,5 @@
 package com.company.user;
 
-import com.company.store.Market;
 import com.company.store.Product;
 
 import java.io.Serializable;

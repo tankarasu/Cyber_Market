@@ -8,11 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AuthenticationPage extends JFrame {
+
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
     static ClientDatabase clientDatabase;
     static UserDatabase userDatabase;
+
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -27,6 +29,7 @@ public class AuthenticationPage extends JFrame {
 
     public static void ShowGUI(String role, Market myMarket) {
 
+
         userDatabase = (UserDatabase)Main.isDeSerialized("UserDatabase");
         if(userDatabase==null){
             System.out.println("restored userDatabase EMPTY");
@@ -37,13 +40,19 @@ public class AuthenticationPage extends JFrame {
             System.out.println("restored clientDatabase EMPTY");
             clientDatabase = new ClientDatabase();
         }
+
      AdminDatabase adminDatabase = new AdminDatabase();
         JFrame frame = new JFrame("Authentication Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame, role, clientDatabase, myMarket, clientDatabase, adminDatabase);
+        addComponentsToFrame(frame,
+                role,
+                clientDatabase,
+                myMarket,
+                clientDatabase,
+                adminDatabase);
 
         frame.setVisible(true);
     }
@@ -110,7 +119,8 @@ public class AuthenticationPage extends JFrame {
                     AuthenticationPage.ShowGUI("client", myMarket);
                 } else {
                     panel.setVisible(false);
-                    ClientInterface_Page.ShowGUI(client.getM_aUserList().get(index), myMarket);
+                    ClientInterface_Page.ShowGUI(client.getM_aUserList().get(index),
+                            myMarket);
                 }
                 // Admin log in
             } else if (role.equals("admin")) {
@@ -130,11 +140,10 @@ public class AuthenticationPage extends JFrame {
                         clientDatabase,
                         userDatabase,
                         nameField.getText(),
-                        passwordField.getText(), myMarket);
+                        passwordField.getText());
                 nameField.setText("");
                 passwordField.setText("");
             }
-            // todo Errors Handling
 
         });
 
@@ -143,14 +152,5 @@ public class AuthenticationPage extends JFrame {
             LandingPage.ShowGUI();
         });
     }
-
-    // -------------------------------------------------
-    // getters
-    // -------------------------------------------------
-
-    // -------------------------------------------------
-    // setters
-    // -------------------------------------------------
-
 
 }

@@ -17,13 +17,6 @@ public class User implements Serializable {
     }
 
     // -------------------------------------------------
-    // méthodes
-    // -------------------------------------------------
-
-    // public void choiceMenu
-    // todo repenser à la refacto
-
-    // -------------------------------------------------
     // getters
     // -------------------------------------------------
 
@@ -35,11 +28,9 @@ public class User implements Serializable {
         return m_sPassword;
     }
 
-
     // -------------------------------------------------
     // setters
     // -------------------------------------------------
-
 
     public void setName(String m_sName) {
         this.m_sName = m_sName;

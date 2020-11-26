@@ -4,7 +4,6 @@ import com.company.store.Market;
 import com.company.user.ClientDatabase;
 import com.company.user.UserDatabase;
 import com.company.views.LandingPage;
-
 import javax.swing.*;
 import java.io.*;
 import java.util.Scanner;
@@ -13,14 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                LandingPage.ShowGUI();
-
-
-            }
-        });
+        SwingUtilities.invokeLater(LandingPage::ShowGUI);
     }
 
     public static Object isDeSerialized(String className){
