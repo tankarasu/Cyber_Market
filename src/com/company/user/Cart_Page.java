@@ -6,7 +6,7 @@ import com.company.views.ClientInterface_Page;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
 public class Cart_Page extends JFrame {
 
@@ -63,12 +63,12 @@ public class Cart_Page extends JFrame {
         // Display Cart
         JTextArea resultTextArea = new JTextArea();
         resultTextArea.setEditable(false);
-        gbc.ipadx = 200;
+        gbc.ipadx = 150;
         gbc.gridwidth = 500;
         JScrollPane resultScrollPane = new JScrollPane(resultTextArea);
         gbc.gridwidth = 500;
 
-        gbc.ipadx = 200;
+        gbc.ipadx = 150;
         gbc.gridy = 5;
 
         layout.setConstraints(resultScrollPane, gbc);
@@ -112,8 +112,8 @@ public class Cart_Page extends JFrame {
         // remove product
         removeAllButton.addActionListener(e -> {
             client.getMyCart().m_aCart.clear();
-                resultTextArea.setText("Your cart has been reseted and the " +
-                        "products go back to the store");
+                    resultTextArea.setText("Your cart has been reseted and the " +
+                            "products go back to the store");
 
             }
         );

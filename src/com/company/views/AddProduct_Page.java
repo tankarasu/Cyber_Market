@@ -110,7 +110,7 @@ public class AddProduct_Page extends JFrame {
                         "value");
                 return;
             }else{
-                myMarket.addProduct(name,Double.parseDouble(quantity),Integer.parseInt(price));
+                myMarket.addProduct(name,Integer.parseInt(quantity),Double.parseDouble(price));
                 Main.serialize(myMarket);
             }
             nameField.setText("");

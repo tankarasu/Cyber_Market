@@ -24,9 +24,14 @@ public class Market implements Serializable {
     // méthodes
     // -------------------------------------------------
 
-    public void addProduct(String p_sProductName, double p_dProductPrice, int p_iQuantity) {
+    public void addProduct(String p_sProductName, int p_iQuantity, double p_dProductPrice) {
+        try {
             getTheStore().add(new Product(p_sProductName, p_iQuantity, p_dProductPrice));
             System.out.println("Product added");
+        } catch (Exception e) {
+            System.out.println("Error - product not added");
+        }
+
     }
 
     // -------------------------------------------------
