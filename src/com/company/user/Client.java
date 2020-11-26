@@ -1,6 +1,7 @@
 package com.company.user;
 
 import com.company.store.Market;
+import com.company.store.Product;
 
 public class Client extends User {
     // -------------------------------------------------
@@ -13,8 +14,8 @@ public class Client extends User {
     //constructor
     // -------------------------------------------------
 
-    public Client(String p_sName, String p_sPassword, Market myMarket) {
-        myCart=new Cart(myMarket);
+    public Client(String p_sName, String p_sPassword) {
+        myCart=new Cart();
         setName(p_sName);
         setPassword(p_sPassword);
     }
@@ -28,6 +29,9 @@ public class Client extends User {
     // -------------------------------------------------
 
     public Cart getMyCart() {
+        /*for(Product products:myCart.m_aCart)  {
+            System.out.println(products.getName());
+        }*/
         return myCart;
     }
 

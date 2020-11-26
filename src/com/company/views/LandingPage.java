@@ -93,6 +93,7 @@ public class LandingPage extends JFrame {
         // Exit
         // spacing after the text in button adjust the size of the button
         JButton exitButton = new JButton("Exit program         ");
+
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridx = 0;

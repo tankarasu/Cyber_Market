@@ -70,8 +70,7 @@ public class Auth {
     public static void createAccount(ClientDatabase clientDatabase, UserDatabase userDatabase,
                                      String name, String password, Market myMarket) {
 
-        Client newClient = new Client(name, password, myMarket);
-        Main.serialize(newClient);
+        Client newClient = new Client(name, password);
         clientDatabase.getM_aUserList().add(newClient);
         Main.serialize(userDatabase);
         Main.serialize(clientDatabase);

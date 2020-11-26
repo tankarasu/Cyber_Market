@@ -83,7 +83,7 @@ public class ProductList_Page extends JFrame {
                     textPane.setText("Please enter a valid number");
                     return;
                 }
-                if (Integer.parseInt(productQuantity) < 0) {
+                if (Integer.parseInt(productQuantity) <= 0) {
                     textPane.setText("Please enter a valid number");
                     return;
                 }
@@ -97,7 +97,6 @@ public class ProductList_Page extends JFrame {
                 }
 
                 // add to cart
-
                 client.getMyCart().addProductToCart(product, Integer.parseInt(productQuantity));
 
                 // remove from stock

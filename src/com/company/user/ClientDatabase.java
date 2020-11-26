@@ -8,8 +8,10 @@ public class ClientDatabase extends UserDatabase {
     // constructor
     // -------------------------------------------------
 
-    public ClientDatabase(Client client) {
-        getM_aUserList().add(client);
+
+    public ClientDatabase() {
+        Client clientOne = new Client("John", "AZERTY1");
+        getM_aUserList().add(clientOne);
     }
 
 }

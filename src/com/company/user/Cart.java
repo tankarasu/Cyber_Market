@@ -17,7 +17,7 @@ public class Cart implements Serializable {
     // constructor
     // -------------------------------------------------
 
-    public Cart(Market myMarket) {
+    public Cart() {
         m_aCart = new ArrayList<>();
     }
 

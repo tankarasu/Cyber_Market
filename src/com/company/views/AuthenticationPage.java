@@ -2,10 +2,7 @@ package com.company.views;
 
 import com.company.Main;
 import com.company.store.Market;
-import com.company.user.AdminDatabase;
-import com.company.user.Client;
-import com.company.user.ClientDatabase;
-import com.company.user.UserDatabase;
+import com.company.user.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,16 +25,17 @@ public class AuthenticationPage extends JFrame {
     // méthodes
     // -------------------------------------------------
 
-
     public static void ShowGUI(String role, Market myMarket) {
-        clientDatabase = (ClientDatabase) Main.isDeSerialized("ClientDatabase");
-        if(clientDatabase==null){
-            Client clientOne = new Client("John", "AZERTY1",myMarket);
-            clientDatabase = new ClientDatabase(clientOne);
-        }
+
         userDatabase = (UserDatabase)Main.isDeSerialized("UserDatabase");
         if(userDatabase==null){
+            System.out.println("restored userDatabase EMPTY");
             userDatabase = new UserDatabase();
+        }
+        clientDatabase = (ClientDatabase) Main.isDeSerialized("ClientDatabase");
+        if(clientDatabase==null){
+            System.out.println("restored clientDatabase EMPTY");
+            clientDatabase = new ClientDatabase();
         }
      AdminDatabase adminDatabase = new AdminDatabase();
         JFrame frame = new JFrame("Authentication Page");
@@ -52,7 +50,10 @@ public class AuthenticationPage extends JFrame {
 
     public static void addComponentsToFrame(Container panel,
                                             String role,
-                                            ClientDatabase client, Market myMarket, ClientDatabase clientDatabase, UserDatabase adminDatabase) {
+                                            ClientDatabase client,
+                                            Market myMarket,
+                                            ClientDatabase clientDatabase,
+                                            UserDatabase adminDatabase) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();

@@ -4,7 +4,6 @@ import com.company.Main;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Market implements Serializable {
@@ -13,7 +12,6 @@ public class Market implements Serializable {
     // -------------------------------------------------
 
     ArrayList<Product> m_aStore = new ArrayList<>();
-    Scanner userInput = new Scanner(System.in);
 
 
     // -------------------------------------------------
@@ -34,23 +32,23 @@ public class Market implements Serializable {
         String choice;
 
         System.out.println("Enter product name");
-        String productName = userInput.next();
+        String productName = Main.getInput();
 
         do {
             System.out.println("Enter product price");
-            choice = userInput.next();
+            choice = Main.getInput();
         } while (!Pattern.matches(regex, choice));
         double productPrice = Double.parseDouble(choice);
         // todo plus tard, changer regex pour prise en compte de nombres à virgule
 
         do {
             System.out.println("Enter product quantity");
-            choice = userInput.next();
+            choice = Main.getInput();
         } while (!Pattern.matches(regex, choice));
         int productQuantity = Integer.parseInt(choice);
 
         addProduct(productName, productPrice, productQuantity);
-        Main.serialize("myMarket");
+
     }
 
     public void addProduct(String p_sProductName, double p_dProductPrice, int p_iQuantity) {
