@@ -1,17 +1,18 @@
 package com.company.store;
 
+import com.company.Main;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Market {
+public class Market implements Serializable {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
 
     ArrayList<Product> m_aStore = new ArrayList<>();
-    Product baguette = new Product("baguette", 42, 2.0);
-    Product pain = new Product("pain", 42, 1.0);
     Scanner userInput = new Scanner(System.in);
 
 
@@ -21,8 +22,6 @@ public class Market {
 
 
     public Market() {
-        m_aStore.add(baguette);
-        m_aStore.add(pain);
     }
 
     // -------------------------------------------------
@@ -51,6 +50,7 @@ public class Market {
         int productQuantity = Integer.parseInt(choice);
 
         addProduct(productName, productPrice, productQuantity);
+        Main.serialize("myMarket");
     }
 
     public void addProduct(String p_sProductName, double p_dProductPrice, int p_iQuantity) {

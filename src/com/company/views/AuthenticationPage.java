@@ -1,7 +1,9 @@
 package com.company.views;
 
+import com.company.Main;
 import com.company.store.Market;
 import com.company.user.AdminDatabase;
+import com.company.user.Client;
 import com.company.user.ClientDatabase;
 import com.company.user.UserDatabase;
 
@@ -12,6 +14,8 @@ public class AuthenticationPage extends JFrame {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
+    static ClientDatabase clientDatabase;
+    static UserDatabase userDatabase;
     // -------------------------------------------------
     //constructor
     // -------------------------------------------------
@@ -26,7 +30,15 @@ public class AuthenticationPage extends JFrame {
 
 
     public static void ShowGUI(String role, Market myMarket) {
-     ClientDatabase clientDatabase = new ClientDatabase(myMarket);
+        clientDatabase = (ClientDatabase) Main.isDeSerialized("ClientDatabase");
+        if(clientDatabase==null){
+            Client clientOne = new Client("John", "AZERTY1",myMarket);
+            clientDatabase = new ClientDatabase(clientOne);
+        }
+        userDatabase = (UserDatabase)Main.isDeSerialized("UserDatabase");
+        if(userDatabase==null){
+            userDatabase = new UserDatabase();
+        }
      AdminDatabase adminDatabase = new AdminDatabase();
         JFrame frame = new JFrame("Authentication Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -115,6 +127,7 @@ public class AuthenticationPage extends JFrame {
                 // create an account
                 Auth.createAccount(
                         clientDatabase,
+                        userDatabase,
                         nameField.getText(),
                         passwordField.getText(), myMarket);
                 nameField.setText("");

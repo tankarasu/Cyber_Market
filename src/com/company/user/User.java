@@ -1,6 +1,8 @@
 package com.company.user;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
