@@ -1,5 +1,6 @@
 package com.company.user;
 
+import com.company.Main;
 import com.company.store.Market;
 import com.company.store.Product;
 import com.company.views.ClientInterface_Page;
@@ -104,6 +105,7 @@ public class Cart_Page extends JFrame {
         // buy ALl products
         buyAllButton.addActionListener(e -> {
             client.getMyCart().m_aCart.clear();
+                    Main.serialize(myMarket);
                     resultTextArea.setText("Your cart has been processed, you will " +
                             "receive your articles soon");
             }

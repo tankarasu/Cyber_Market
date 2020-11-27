@@ -1,5 +1,6 @@
 package com.company.views;
 
+import com.company.Main;
 import com.company.store.Market;
 import com.company.store.Product;
 
@@ -61,15 +62,27 @@ public class AdminProductList_Page extends JFrame {
             gbc.gridy = index;
             panel.add(productButton, gbc);
 
+
             productButton.addActionListener(e -> {
                 int productIndex = myMarket.getTheStore().indexOf(product);
                 Product infoProduct = myMarket.getTheStore().get(productIndex);
                 String message = "name: " + infoProduct.getName() + " - "
                         + infoProduct.getQuantity() + " pieces"
-                        + infoProduct.getPrice() + " €/unit";
-                JOptionPane.showMessageDialog(null, message, "détails du produit"
+                        + infoProduct.getPrice() + " € /unit\n"
+                        + "Please specify a quantity to add/remove";
+                String stringNewQuantity = JOptionPane.showInputDialog(null, message, "Product details"
                         , JOptionPane.PLAIN_MESSAGE);
+                int newQuantity = Integer.parseInt(stringNewQuantity);
+                if(newQuantity<0&&java.lang.Math.abs(newQuantity)>infoProduct.getQuantity()){
+                    infoProduct.setQuantity(0);
+                }else{
+                    infoProduct.setQuantity(infoProduct.getQuantity()+newQuantity);
+                }
+
+                Main.serialize(myMarket);
+
             });
+
         }
 
         returnButton.addActionListener(e -> {
