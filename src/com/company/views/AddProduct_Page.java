@@ -23,7 +23,7 @@ public class AddProduct_Page extends JFrame {
     public static void ShowGUI(Market myMarket) {
         JFrame frame = new JFrame("Add Product Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(760, 640);
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
 
         addComponentsToFrame(frame, myMarket);

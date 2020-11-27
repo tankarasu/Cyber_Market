@@ -30,21 +30,31 @@ public class AuthenticationPage extends JFrame {
     public static void ShowGUI(String role, Market myMarket) {
 
 
-        userDatabase = (UserDatabase)Main.isDeSerialized("UserDatabase");
-        if(userDatabase==null){
+        userDatabase = (UserDatabase) Main.isDeSerialized("UserDatabase");
+        if (userDatabase == null) {
             System.out.println("restored userDatabase EMPTY");
             userDatabase = new UserDatabase();
         }
         clientDatabase = (ClientDatabase) Main.isDeSerialized("ClientDatabase");
-        if(clientDatabase==null){
+        if (clientDatabase == null) {
             System.out.println("restored clientDatabase EMPTY");
             clientDatabase = new ClientDatabase();
         }
 
-     AdminDatabase adminDatabase = new AdminDatabase();
-        JFrame frame = new JFrame("Authentication Page");
+        AdminDatabase adminDatabase = new AdminDatabase();
+
+        // customize title of the page
+        String title = "";
+        if (role.equals("admin"))
+            title = "Admin login Page";
+        else if (role.equals("client"))
+            title = "Client login Page";
+        else
+            title = "Create an Account";
+
+        JFrame frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(760, 640);
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
 
         addComponentsToFrame(frame,
@@ -89,7 +99,7 @@ public class AuthenticationPage extends JFrame {
         panel.add(password, gbc);
 
         // Textfield Password
-        JTextField passwordField = new JTextField(15);
+        JPasswordField passwordField = new JPasswordField(15);
         gbc.gridy = 4;
 
         panel.add(passwordField, gbc);

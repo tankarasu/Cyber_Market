@@ -25,7 +25,7 @@ public class Cart_Page extends JFrame {
     public static void ShowGUI(User client, Market myMarket) {
         JFrame frame = new JFrame("My Cart");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(760, 640);
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
 
         addComponentsToFrame(frame, client, myMarket);
@@ -74,18 +74,19 @@ public class Cart_Page extends JFrame {
 
         layout.setConstraints(resultScrollPane, gbc);
         panel.add(resultScrollPane);
-        gbc.ipady=0;
+        gbc.ipady = 0;
         //JTextPane textPane = new JTextPane();
         //String textPaneText = "Your Cart is Empty";
 
-        int total=0;
+        int total = 0;
         for (Product product : client.getMyCart().m_aCart) {
-            total+=(product.getQuantity() * product.getPrice());
+            total += (product.getQuantity() * product.getPrice());
             int index = client.getMyCart().m_aCart.indexOf(product);
             resultTextArea.append((index + 1) + " - " + product.getName()
                     + " Quantity:" + product.getQuantity()
                     + " price: " + product.getPrice() + " €/unit\n");
-        }resultTextArea.append("Total bill value: "+total+"€");
+        }
+        resultTextArea.append("Total bill value: " + total + "€");
 
         //textPane.setText(textPaneText);
         //textPane.setEnabled(false);
@@ -104,20 +105,20 @@ public class Cart_Page extends JFrame {
         // Event listeners
         // buy ALl products
         buyAllButton.addActionListener(e -> {
-            client.getMyCart().m_aCart.clear();
+                    client.getMyCart().m_aCart.clear();
                     Main.serialize(myMarket);
                     resultTextArea.setText("Your cart has been processed, you will " +
                             "receive your articles soon");
-            }
+                }
         );
 
         // remove product
         removeAllButton.addActionListener(e -> {
-            client.getMyCart().m_aCart.clear();
+                    client.getMyCart().m_aCart.clear();
                     resultTextArea.setText("Your cart has been reseted and the " +
                             "products go back to the store");
 
-            }
+                }
         );
 
         // return

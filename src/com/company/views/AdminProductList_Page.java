@@ -22,15 +22,15 @@ public class AdminProductList_Page extends JFrame {
     public static void ShowGUI(Market myMarket) {
         JFrame frame = new JFrame("Product in stock");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(760, 640);
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame,myMarket);
+        addComponentsToFrame(frame, myMarket);
 
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel,Market myMarket) {
+    public static void addComponentsToFrame(Container panel, Market myMarket) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -70,13 +70,14 @@ public class AdminProductList_Page extends JFrame {
                         + infoProduct.getQuantity() + " pieces"
                         + infoProduct.getPrice() + " € /unit\n"
                         + "Please specify a quantity to add/remove";
-                String stringNewQuantity = JOptionPane.showInputDialog(null, message, "Product details"
-                        , JOptionPane.PLAIN_MESSAGE);
-                int newQuantity = Integer.parseInt(stringNewQuantity);
-                if(newQuantity<0&&java.lang.Math.abs(newQuantity)>infoProduct.getQuantity()){
+                String stringNewQuantity = (String) JOptionPane.showInputDialog(null, message, "Product details"
+                        , JOptionPane.PLAIN_MESSAGE, null, null, "0");
+                int newQuantity = 0;
+                newQuantity = Integer.parseInt(stringNewQuantity);
+                if (newQuantity < 0 && java.lang.Math.abs(newQuantity) > infoProduct.getQuantity()) {
                     infoProduct.setQuantity(0);
-                }else{
-                    infoProduct.setQuantity(infoProduct.getQuantity()+newQuantity);
+                } else {
+                    infoProduct.setQuantity(infoProduct.getQuantity() + newQuantity);
                 }
 
                 Main.serialize(myMarket);

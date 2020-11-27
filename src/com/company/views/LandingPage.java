@@ -38,7 +38,7 @@ public class LandingPage extends JFrame {
 
         JFrame frame = new JFrame("Landing Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(760, 640);
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
 
         addComponentsToFrame(frame, myMarket);

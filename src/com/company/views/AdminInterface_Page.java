@@ -14,7 +14,7 @@ public class AdminInterface_Page extends JFrame {
     public static void ShowGUI(Market myMarket) {
         JFrame frame = new JFrame("Admin Interface");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(760, 640);
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
 
         addComponentsToFrame(frame, myMarket);
@@ -48,13 +48,6 @@ public class AdminInterface_Page extends JFrame {
         gbc.gridy = 2;
 
         panel.add(addProductButton, gbc);
-
-        //Order History
-        JButton orderHistoryButton = new JButton("Order History");
-
-        gbc.gridy = 3;
-
-        panel.add(orderHistoryButton, gbc);
 
         //Log Out Button
         JButton logOutButton = new JButton("Log Out      ");

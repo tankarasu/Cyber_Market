@@ -24,7 +24,7 @@ public class ClientInterface_Page extends JFrame {
     public static void ShowGUI(User client, Market myMarket) {
         JFrame frame = new JFrame("Client Interface");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(760, 640);
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
 
         addComponentsToFrame(frame, client, myMarket);

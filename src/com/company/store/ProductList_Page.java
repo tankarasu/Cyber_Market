@@ -17,7 +17,7 @@ public class ProductList_Page extends JFrame {
     public static void ShowGUI(User client, Market myMarket) {
         JFrame frame = new JFrame("Product list");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(760, 640);
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
 
         addComponentsToFrame(frame, client, myMarket);
@@ -71,10 +71,10 @@ public class ProductList_Page extends JFrame {
             // selection of a Product
             productButton.addActionListener(e -> {
                 String numberRegex = "^[ ]?[0-9]\\d*[ ]?$";
-                String productQuantity="";
+                String productQuantity = "";
 
                 productQuantity = JOptionPane.showInputDialog(null,
-                        "How many product to add ?\n",
+                        "How many product to add ?\n" + product.getQuantity() + " available",
                         "Add to cart", JOptionPane.PLAIN_MESSAGE);
 
                 // validation du formulaire Q
