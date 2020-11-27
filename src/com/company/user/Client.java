@@ -22,6 +22,9 @@ public class Client extends User {
     // -------------------------------------------------
 
     public Cart getMyCart() {
+        /*for(Product products:myCart.m_aCart)  {
+            System.out.println(products.getName());
+        }*/
         return myCart;
     }
 

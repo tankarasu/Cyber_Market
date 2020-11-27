@@ -1,5 +1,8 @@
 package com.company.views;
 
+
+import com.company.Main;
+import com.company.store.Market;
 import com.company.user.Client;
 import com.company.user.ClientDatabase;
 import com.company.user.User;
@@ -53,12 +56,15 @@ public class Auth {
         return -1;
     }
 
-    public static void createAccount(ClientDatabase clientDatabase,
-                                     String name,
-                                     String password) {
+
+    public static void createAccount(ClientDatabase clientDatabase, UserDatabase userDatabase,
+                                     String name, String password) {
+
 
         Client newClient = new Client(name, password);
         clientDatabase.getM_aUserList().add(newClient);
+        Main.serialize(userDatabase);
+        Main.serialize(clientDatabase);
     }
 
 }

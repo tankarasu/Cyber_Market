@@ -1,16 +1,17 @@
 package com.company.views;
 
+import com.company.Main;
 import com.company.store.Market;
-
+import com.company.store.Product;
 import javax.swing.*;
 import java.awt.*;
 
 public class LandingPage extends JFrame {
-
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
     public static String role = "";
+    public static Market myMarket;
 
     // -------------------------------------------------
     //constructor
@@ -26,7 +27,14 @@ public class LandingPage extends JFrame {
 
 
     public static void ShowGUI() {
-        Market myMarket = new Market();
+        myMarket = (Market) Main.isDeSerialized("Market");
+        if(myMarket==null){
+            myMarket = new Market();
+            Product baguette = new Product("Baguette", 42, 2.0);
+            Product pain = new Product("Pain", 42, 1.0);
+            myMarket.getTheStore().add(baguette);
+            myMarket.getTheStore().add(pain);
+        }
 
         JFrame frame = new JFrame("Landing Page");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -34,7 +34,7 @@ public class Cart_Page extends JFrame {
 
     public static void addComponentsToFrame(Container panel,
                                             User client, Market myMarket) {
-        ArrayList<Product> clientCart = client.getMyCart().m_aCart;
+        //ArrayList<Product> clientCart = client.getMyCart().m_aCart;
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -50,57 +50,72 @@ public class Cart_Page extends JFrame {
 
         // Buy all product button
         JButton buyAllButton = new JButton("Buy all Products");
-        gbc.gridy = 2;
+        gbc.gridy = 3;
 
         panel.add(buyAllButton, gbc);
 
         // Remove all product button
         JButton removeAllButton = new JButton("Remove all Products");
-        gbc.gridy = 3;
+        gbc.gridy = 4;
 
         panel.add(removeAllButton, gbc);
 
         // Display Cart
-        JTextPane textPane = new JTextPane();
-        String textPaneText = "Your Cart is Empty";
+        JTextArea resultTextArea = new JTextArea();
+        resultTextArea.setEditable(false);
+        gbc.ipadx = 150;
+        gbc.gridwidth = 500;
+        JScrollPane resultScrollPane = new JScrollPane(resultTextArea);
+        gbc.gridwidth = 500;
 
-        for (Product product : clientCart) {
-            textPaneText = "";
-            int index = clientCart.indexOf(product);
-            textPaneText += (index + 1) + " - " + product.getName()
+        gbc.ipadx = 150;
+        gbc.gridy = 5;
+
+        layout.setConstraints(resultScrollPane, gbc);
+        panel.add(resultScrollPane);
+        gbc.ipady=0;
+        //JTextPane textPane = new JTextPane();
+        //String textPaneText = "Your Cart is Empty";
+
+        int total=0;
+        for (Product product : client.getMyCart().m_aCart) {
+            total+=(product.getQuantity() * product.getPrice());
+            int index = client.getMyCart().m_aCart.indexOf(product);
+            resultTextArea.append((index + 1) + " - " + product.getName()
                     + " Quantity:" + product.getQuantity()
-                    + " price: " + product.getPrice() + " €/unit\n";
-            textPaneText += "total: " + (product.getQuantity() * product.getPrice())
-                    + " €\n";
+                    + " price: " + product.getPrice() + " €/unit\n");
+        }resultTextArea.append("Total bill value: "+total+"€");
 
-        }
-        textPane.setText(textPaneText);
-        textPane.setEnabled(false);
-        gbc.gridy = 4;
+        //textPane.setText(textPaneText);
+        //textPane.setEnabled(false);
+        //gbc.gridy = 4;
 
-        panel.add(textPane, gbc);
+
+        //panel.add(textPane, gbc);
+
 
         // Return button
         JButton returnButton = new JButton("Return");
-        gbc.gridy = 5;
-
+        gbc.gridy = 6;
+        gbc.weightx = 0.5;
         panel.add(returnButton, gbc);
 
         // Event listeners
         // buy ALl products
         buyAllButton.addActionListener(e -> {
-                    clientCart.clear();
-                    textPane.setText("Your cart has been processed, you will " +
+            client.getMyCart().m_aCart.clear();
+                    resultTextArea.setText("Your cart has been processed, you will " +
                             "receive your articles soon");
-                }
+            }
         );
 
         // remove product
         removeAllButton.addActionListener(e -> {
-                    clientCart.clear();
-                    textPane.setText("Your cart has been reset and the " +
+            client.getMyCart().m_aCart.clear();
+                    resultTextArea.setText("Your cart has been reseted and the " +
                             "products go back to the store");
-                }
+
+            }
         );
 
         // return

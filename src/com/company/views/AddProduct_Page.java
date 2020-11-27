@@ -1,5 +1,6 @@
 package com.company.views;
 
+import com.company.Main;
 import com.company.store.Market;
 
 import javax.swing.*;
@@ -104,13 +105,17 @@ public class AddProduct_Page extends JFrame {
             String name = nameField.getText();
             String quantity = quantityField.getText();
             String price = priceField.getText();
-            if (name.equals("") | quantity.equals("") | price.equals("")
-                    | quantity.equals("0") | price.equals("0")
-                    | Pattern.matches(regexNumber, quantity)
-                    | Pattern.matches(regexNumber, price)) {
+            if (name.equals("") | quantity.equals("") | price.equals("") | quantity.equals("0") | price.equals("0") | !quantity.matches(regexNumber) | !price.matches(regexNumber)) {
                 textPane.setText(" You must provide all fields with valid " +
                         "value");
+                return;
+            }else{
+                myMarket.addProduct(name,Integer.parseInt(quantity),Double.parseDouble(price));
+                Main.serialize(myMarket);
             }
+            nameField.setText("");
+            quantityField.setText("");
+            priceField.setText("");
 
         });
 

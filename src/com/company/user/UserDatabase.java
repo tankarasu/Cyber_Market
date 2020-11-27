@@ -1,8 +1,9 @@
 package com.company.user;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class UserDatabase {
+public class UserDatabase implements Serializable {
     // -------------------------------------------------
     // variables membres
     // -------------------------------------------------
