@@ -117,7 +117,6 @@ public class Cart_Page extends JFrame {
                     client.getMyCart().m_aCart.clear();
                     resultTextArea.setText("Your cart has been reseted and the " +
                             "products go back to the store");
-
                 }
         );
 
