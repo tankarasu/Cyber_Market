@@ -6,6 +6,7 @@ import com.company.store.Product;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.regex.Pattern;
 
 public class AdminProductList_Page extends JFrame {
 
@@ -64,6 +65,8 @@ public class AdminProductList_Page extends JFrame {
 
 
             productButton.addActionListener(e -> {
+                String numberRegex = "^[ ]?[0-9]\\d*[ ]?$";
+                String productQuantity = "";
                 int productIndex = myMarket.getTheStore().indexOf(product);
                 Product infoProduct = myMarket.getTheStore().get(productIndex);
                 String message = "name: " + infoProduct.getName() + " - "
@@ -72,6 +75,9 @@ public class AdminProductList_Page extends JFrame {
                         + "Please specify a quantity to add/remove";
                 String stringNewQuantity = (String) JOptionPane.showInputDialog(null, message, "Product details"
                         , JOptionPane.PLAIN_MESSAGE, null, null, "0");
+                if (!Pattern.matches(numberRegex, stringNewQuantity)) {
+                    return;
+                }
                 int newQuantity = 0;
                 newQuantity = Integer.parseInt(stringNewQuantity);
                 if (newQuantity < 0 && java.lang.Math.abs(newQuantity) > infoProduct.getQuantity()) {
