@@ -27,7 +27,7 @@ public class ClientInterface_Page extends JFrame {
         frame.setSize(760, 640);
         frame.setLocationRelativeTo(null);
 
-        addComponentsToFrame(frame,client, myMarket);
+        addComponentsToFrame(frame, client, myMarket);
 
         frame.setVisible(true);
 
@@ -56,14 +56,14 @@ public class ClientInterface_Page extends JFrame {
         panel.add(productListButton, gbc);
 
         //My Cart
-        JButton myCartButton = new JButton("My Cart ");
+        JButton myCartButton = new JButton("My Cart     ");
 
         gbc.gridy = 2;
 
         panel.add(myCartButton, gbc);
 
         //Log Out Button
-        JButton logOutButton = new JButton("Log Out");
+        JButton logOutButton = new JButton("Log Out     ");
 
         gbc.gridy = 3;
 

@@ -82,7 +82,7 @@ public class AddProduct_Page extends JFrame {
         panel.add(priceField, gbc);
 
         // confirm
-        JButton submitButton = new JButton("Add");
+        JButton submitButton = new JButton("Add   ");
         gbc.gridy = 7;
 
         panel.add(submitButton, gbc);
@@ -109,8 +109,8 @@ public class AddProduct_Page extends JFrame {
                 textPane.setText(" You must provide all fields with valid " +
                         "value");
                 return;
-            }else{
-                myMarket.addProduct(name,Integer.parseInt(quantity),Double.parseDouble(price));
+            } else {
+                myMarket.addProduct(name, Integer.parseInt(quantity), Double.parseDouble(price));
                 Main.serialize(myMarket);
             }
             nameField.setText("");

@@ -22,7 +22,7 @@ public class AdminInterface_Page extends JFrame {
         frame.setVisible(true);
     }
 
-    public static void addComponentsToFrame(Container panel, Market myMarket){
+    public static void addComponentsToFrame(Container panel, Market myMarket) {
         GridBagLayout layout = new GridBagLayout();
         panel.setLayout(layout);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -37,28 +37,27 @@ public class AdminInterface_Page extends JFrame {
         panel.add(titleLabel, gbc);
 
         //product list button
-        JButton productListButton = new JButton("Product list");
+        JButton productListButton = new JButton("Product List ");
 
         gbc.gridy = 1;
 
-        panel.add(productListButton,gbc);
+        panel.add(productListButton, gbc);
 
         //Add product
-        JButton addProductButton = new JButton("Add product");
-
+        JButton addProductButton = new JButton("Add Product  ");
         gbc.gridy = 2;
 
-        panel.add(addProductButton,gbc);
+        panel.add(addProductButton, gbc);
 
         //Order History
-        JButton orderHistoryButton = new JButton("Order history");
+        JButton orderHistoryButton = new JButton("Order History");
 
         gbc.gridy = 3;
 
-        panel.add(orderHistoryButton,gbc);
+        panel.add(orderHistoryButton, gbc);
 
         //Log Out Button
-        JButton logOutButton = new JButton("Log Out");
+        JButton logOutButton = new JButton("Log Out      ");
 
         gbc.gridy = 4;
 

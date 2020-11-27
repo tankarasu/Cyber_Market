@@ -49,7 +49,7 @@ public class Cart_Page extends JFrame {
         panel.add(titleLabel, gbc);
 
         // Buy all product button
-        JButton buyAllButton = new JButton("Buy all Products");
+        JButton buyAllButton = new JButton("Buy all Products    ");
         gbc.gridy = 3;
 
         panel.add(buyAllButton, gbc);

@@ -71,7 +71,7 @@ public class ProductList_Page extends JFrame {
             // selection of a Product
             productButton.addActionListener(e -> {
                 String numberRegex = "^[ ]?[0-9]\\d*[ ]?$";
-                String productQuantity;
+                String productQuantity="";
 
                 productQuantity = JOptionPane.showInputDialog(null,
                         "How many product to add ?\n",
