@@ -1,5 +1,56 @@
 @startuml
-Main -> Menu : startApp( )
-Menu -> Auth : isClientRegistered( )
-Auth -> Menu
+header Cyber Market\n
+
+autonumber
+group Verification sur User
+LandingPage -> AuthenticationPage
+
+AuthenticationPage -> Auth : isUseRegistered (rôle)
+note right: Authentification selon rôle
+
+Auth -[#blue]-> AuthenticationPage
+end
+
+====
+
+autonumber
+group ClientInterface_Page
+AuthenticationPage -> ClientInterface_Page
+
+ClientInterface_Page --> ProductList_Page
+note right: affiche la liste des produits
+ProductList_Page -[#blue]->ClientInterface_Page
+
+ClientInterface_Page --> Cart_Page
+note right: affiche la liste du Cart
+Cart_Page -[#blue]-> ClientInterface_Page
+ClientInterface_Page -[#blue]-> LandingPage : log out( )
+end
+
+====
+
+autonumber
+group AdminInterface_Page
+AuthenticationPage -> AdminInterface_Page
+
+AdminInterface_Page -> AdminProductList_Page
+note right: l'admin voit la liste des produits
+AdminProductList_Page -[#blue]-> AdminInterface_Page
+
+AdminInterface_Page -> AddProduct_Page
+note right: l'admin peut ajouter des produits
+AddProduct_Page -[#blue]-> AdminInterface_Page
+
+AdminInterface_Page -[#blue]-> LandingPage
+end
+
+====
+
+autonumber
+group createAccount
+AuthenticationPage -> Auth : createAccount( ) : newClient
+note right: un nouvel utilisateur est créé
+
+AuthenticationPage -[#blue]-> LandingPage : return( )
+end
 @enduml

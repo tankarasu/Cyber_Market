@@ -78,6 +78,7 @@ public class ClientInterface_Page extends JFrame {
             panel.setVisible(false);
             ProductList_Page.ShowGUI(client, myMarket);
         });
+
         myCartButton.addActionListener(e -> {
             panel.setVisible(false);
             Cart_Page.ShowGUI(client, myMarket);
